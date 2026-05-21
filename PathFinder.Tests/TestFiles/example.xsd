@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://cargowise.com/ehub/products/ocm/gtnexus/2015/03" xmlns:b="http://schemas.microsoft.com/BizTalk/2003" elementFormDefault="unqualified" targetNamespace="http://cargowise.com/ehub/products/ocm/gtnexus/2015/03" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="AcknowledgementMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TransactionInfo">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MessageSender" type="xs:string" />
+              <xs:element name="MessageRecipient" type="xs:string" />
+              <xs:element name="MessageID" type="xs:string" />
+              <xs:element name="Created" type="xs:dateTime" />
+              <xs:element name="FileName" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AcknowledgementGroup">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MessageID" type="xs:unsignedByte" />
+              <xs:element name="FileName" type="xs:string" />
+              <xs:element name="Acknowledgement">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Detail">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute name="Severity" type="xs:unsignedByte" use="required" />
+                            <xs:attribute name="AuditID" type="xs:unsignedInt" use="required" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="References">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="Reference">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute name="referenceType" type="xs:string" use="required" />
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="ShipmentId" type="xs:string" use="required" />
+                  <xs:attribute name="Sequence" type="xs:unsignedByte" use="required" />
+                  <xs:attribute name="GtnId" type="xs:unsignedInt" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="AcknowledgedType" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

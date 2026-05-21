@@ -1,0 +1,278 @@
+{
+    "bookingChannelReference": "MAEAPI000000015",
+    "cargoMovementTypeAtDestination": "FCL",
+    "cargoMovementTypeAtOrigin": "FCL",
+    "carrierExportVoyageNumber": "323N",
+    "deliveryTypeAtDestination": "CY",
+    "documentParties": {
+        "bookingAgent": {
+            "address": {
+                "city": "ALEXANDRIA",
+                "countryCode": "AU",
+                "postCode": "2015",
+                "stateRegion": "NSW",
+                "street": "102 O'RIORDAN STREET",
+                "UNLocationCode": "AUSYD"
+            },
+            "identifyingCodes": [
+                {
+                    "partyCode": "MSKDAUIIG"
+                }
+            ],
+            "partyContactDetails": [
+                {
+                    "email": "ww@wtg.com",
+                    "name": "Wayne Wu",
+                    "phone": "+61422566315"
+                }
+            ],
+            "partyName": "YOUR AUSTRALIA CORPORATION",
+            "reference": "C00002942-V1"
+        },
+        "carrierBookingOffice": {
+            "address": {
+                "city": "SYDNEY",
+                "countryCode": "AU",
+                "postCode": "2000",
+                "stateRegion": "NSW",
+                "street": "383 KENT STREET"
+            },
+            "partyName": "MAERSK LINES PTY LTD",
+            "UNLocationCode": "AUSYD"
+        },
+        "consignee": {
+            "address": {
+                "city": "DALIAN",
+                "countryCode": "CN",
+                "postCode": "116600",
+                "stateRegion": "21",
+                "street": "NO. 125 HUANGHAI MIDDLE ROAD DALIAN DEVELOPMENT AREA",
+                "UNLocationCode": "CNDLC"
+            },
+            "partyName": "CN AGENT (DLC)"
+        },
+        "other": [
+            {
+                "party": {
+                    "address": {
+                        "city": "ALEXANDRIA",
+                        "countryCode": "AU",
+                        "postCode": "2015",
+                        "stateRegion": "NSW",
+                        "street": "102 O'RIORDAN STREET",
+                        "UNLocationCode": "AUSYD"
+                    },
+                    "identifyingCodes": [
+                        {
+                            "partyCode": "MSKDAUIIG"
+                        }
+                    ],
+                    "partyContactDetails": [
+                        {
+                            "email": "ww@wtg.com",
+                            "name": "Wayne Wu",
+                            "phone": "+61422566315"
+                        }
+                    ],
+                    "partyName": "YOUR AUSTRALIA CORPORATION"
+                },
+                "partyFunction": "DDR"
+            },
+            {
+                "party": {
+                    "address": {
+                        "city": "HOME BUSH",
+                        "countryCode": "AU",
+                        "postCode": "2000",
+                        "stateRegion": "NSW",
+                        "street": "874 PRICESS HIGHWAY TECHNICAL BUILDING 2201",
+                        "UNLocationCode": "AUSYD"
+                    },
+                    "partyContactDetails": [
+                        {
+                            "email": "ww@wtg.com",
+                            "name": "Wayne Wu",
+                            "phone": "+61422566315"
+                        }
+                    ],
+                    "partyName": "AU SUPPLIER AND SELLER"
+                },
+                "partyFunction": "N1"
+            },
+            {
+                "party": {
+                    "address": {
+                        "city": "WATERLOO",
+                        "countryCode": "AU",
+                        "postCode": "2017",
+                        "stateRegion": "NSW",
+                        "street": "BOURKE STREET",
+                        "UNLocationCode": "AUSYD"
+                    },
+                    "partyContactDetails": [
+                        {
+                            "email": "ww@wtg.com",
+                            "name": "Wayne Wu",
+                            "phone": "+61422566315"
+                        }
+                    ],
+                    "partyName": "AU AGENT"
+                },
+                "partyFunction": "N2"
+            },
+            {
+                "party": {
+                    "address": {
+                        "city": "TIANJIN",
+                        "countryCode": "CN",
+                        "postCode": "300204",
+                        "stateRegion": "12",
+                        "street": "180 JINGANG ROAD HEXI DISTRICT",
+                        "UNLocationCode": "CNSHA"
+                    },
+                    "partyContactDetails": [
+                        {
+                            "email": "ww@wtg.com",
+                            "name": "Wayne Wu",
+                            "phone": "+61422566315"
+                        }
+                    ],
+                    "partyName": "CN 10 IMPORTER/EXPORTER CORPORATION"
+                },
+                "partyFunction": "NI"
+            },
+            {
+                "party": {
+                    "identifyingCodes": [
+                        {
+                            "partyCode": "NACNIKE"
+                        }
+                    ],
+                    "partyName": "NACNIKE"
+                },
+                "partyFunction": "NAC"
+            }
+        ],
+        "serviceContractOwner": {
+            "identifyingCodes": [
+                {
+                    "partyCode": "NACNIKE"
+                }
+            ],
+            "partyName": "NACNIKE"
+        },
+        "shipper": {
+            "address": {
+                "city": "ALEXANDRIA",
+                "countryCode": "AU",
+                "postCode": "2015",
+                "stateRegion": "NSW",
+                "street": "102 O'RIORDAN STREET",
+                "UNLocationCode": "AUSYD"
+            },
+            "identifyingCodes": [
+                {
+                    "partyCode": "MSKDAUIIG"
+                }
+            ],
+            "partyName": "YOUR AUSTRALIA CORPORATION AS CARRIER YOUR AUSTRALIA CORPORATION",
+            "reference": "AGTREF0001"
+        }
+    },
+    "expectedArrivalAtPlaceOfDeliveryEndDate": "2026-05-01",
+    "expectedArrivalAtPlaceOfDeliveryStartDate": "2026-05-01",
+    "expectedDepartureDate": "2026-03-27",
+    "isEquipmentSubstitutionAllowed": false,
+    "isExportDeclarationRequired": false,
+    "isPartialLoadAllowed": true,
+    "receiptTypeAtOrigin": "CY",
+    "references": [
+        {
+            "type": "AEF",
+            "value": "CLR0011455"
+        }
+    ],
+    "requestedEquipments": [
+        {
+            "activeReeferSettings": {
+                "humiditySetpoint": 10,
+                "isGeneratorSetRequired": true,
+                "isVentilationOpen": false,
+                "temperatureSetpoint": -18,
+                "temperatureUnit": "CEL"
+            },
+            "commodities": [
+                {
+                    "cargoGrossVolume": {
+                        "unit": "MTQ",
+                        "value": 20
+                    },
+                    "cargoGrossWeight": {
+                        "unit": "KGM",
+                        "value": 20000
+                    },
+                    "commodityType": "test goods description",
+                    "HSCodes": [
+                        "621111"
+                    ],
+                    "outerPackaging": {
+                        "description": "Pallet",
+                        "numberOfPackages": 20
+                    }
+                }
+            ],
+            "isNonOperatingReefer": false,
+            "isShipperOwned": false,
+            "originEmptyContainerPickup": {
+                "dateTime": "2026-03-23T18:48:00+11:00",
+                "depotReleaseLocation": {
+                    "address": {
+                        "city": "MARRICKVILLE",
+                        "countryCode": "AU",
+                        "postCode": "2204",
+                        "stateRegion": "NSW",
+                        "street": "98-100 CHAPEL STREET"
+                    },
+                    "locationName": "AU CONTAINER YARD",
+                    "UNLocationCode": "AUSYD"
+                }
+            },
+            "units": 2
+        }
+    ],
+    "serviceContractReference": "SYDSCV001125",
+    "shipmentLocations": [
+        {
+            "location": {
+                "locationName": "Shanghai Hongqiao International Apt",
+                "UNLocationCode": "CNSHA"
+            },
+            "locationTypeCode": "PDE"
+        },
+        {
+            "location": {
+                "locationName": "Sydney, Australia",
+                "UNLocationCode": "AUSYD"
+            },
+            "locationTypeCode": "PRE"
+        },
+        {
+            "location": {
+                "locationName": "Shanghai Hongqiao International Apt",
+                "UNLocationCode": "CNSHA"
+            },
+            "locationTypeCode": "POD"
+        },
+        {
+            "location": {
+                "locationName": "Sydney, Australia",
+                "UNLocationCode": "AUSYD"
+            },
+            "locationTypeCode": "POL"
+        }
+    ],
+    "vessel": {
+        "name": "OOCL FREEDOM",
+        "vesselIMONumber": "8400323"
+    }
+}

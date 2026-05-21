@@ -1,0 +1,1905 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="PortOrder" type="PortOrderElementType"/>
+  <xs:complexType name="ActivityType">
+    <xs:simpleContent>
+      <xs:extension base="an..4">
+        <xs:attribute name="unit" type="radioactiveActivityUnitCode">
+          <xs:annotation>
+            <xs:documentation xml:lang="DE" source="Desc">Einheit der Aktivität</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="an..10">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="10"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="an..100">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="an..1024">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="1024"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="an..11">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="11"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="an..110">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="110"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="an..12">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="12"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="an..13">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="13"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="an..16">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="16"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="an..20">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="20"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="an..216">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="216"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="an..3">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="an..30">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="30"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="an..35">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="35"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="an..4">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="4"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="an..40">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="40"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="an..4lines">
+    <xs:annotation>
+      <xs:documentation xml:lang="DE" source="Desc">Angabe von 1-4 Zeilen mit jeweils maximal 72 Zeichen</xs:documentation>
+      <xs:documentation xml:lang="EN" source="Desc">Specification of 1-4 columns with each max. 72 characters</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(:?[^\r?\n]{1,72}(\r?\n)?){0,3}[^\r?\n]{1,72}[\r?\n]?"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="an..50">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="50"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="an..6">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="6"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="an..7">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="7"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="an..72">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="72"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="an..8">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="8"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="an1">
+    <xs:restriction base="xs:string">
+      <xs:length value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="an2">
+    <xs:restriction base="xs:string">
+      <xs:length value="2"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="an5">
+    <xs:restriction base="xs:string">
+      <xs:length value="5"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="chassisNumberType">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="17"/>
+      <xs:pattern value="[^ioOI]{1,17}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ContactType">
+    <xs:sequence>
+      <xs:element name="Name" type="an..40">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Name des Ansprechpartners</xs:documentation>
+          <xs:documentation source="Note1">010</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Name of contact person</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EMail" type="an..100">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">E-Mail-Adresse des Ansprechpartners</xs:documentation>
+          <xs:documentation source="Note1">032</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Email address of contact person</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="FAX" type="an..40" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">FAX-Nummer des Ansprechpartners</xs:documentation>
+          <xs:documentation source="Note1">036</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Fax number of contact person</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Phone" type="an..40">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Telefonnummer des Ansprechpartners</xs:documentation>
+          <xs:documentation source="Note1">037</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Phone number of contact person</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContainerReferencesType">
+    <xs:sequence>
+      <xs:element name="ContainerReference" type="ContainerReferenceType" maxOccurs="999"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContainerReferenceType">
+    <xs:sequence>
+      <xs:element name="ContainerNumber" type="an..12">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Containernummer</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Container number</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContainersType">
+    <xs:sequence>
+      <xs:element name="Container" type="ContainerType" maxOccurs="999">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Informationen zu einem Container</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Information about a container</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContainerType">
+    <xs:sequence>
+      <xs:element name="ContainerNumber" type="an..12">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Containernummer</xs:documentation>
+          <xs:documentation source="Note1">028(4-15)</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Container number</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="NonIsoContainerIndicator" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Gibt an, ob es sich um einen Non Iso Container handelt oder nicht. true = Es handelt sich um einen Non Iso Container, false oder Element nicht vorhanden = Es handelt sich nicht um einen Non Iso Container</xs:documentation>
+          <xs:documentation source="Note1">028(16)</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Indicates whether it is about a non iso container or not. true = it is about a non iso container, false or element not available = it is not about a non iso container</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Seal" type="an..11" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Siegelnummer</xs:documentation>
+          <xs:documentation source="Note1">028(18-28)</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Seal number</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SizeType" type="an..4">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Container Size and Type Code nach ISO6346</xs:documentation>
+          <xs:documentation source="Note1">028(29-32)</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Container size and type code according to ISO6346</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="TemperatureRange" type="TemperatureRangeType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Temperaturbereich</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Temperature range</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="d4.3">
+    <xs:restriction base="xs:decimal">
+      <xs:pattern value="\d{1,4}(\.\d{1,3})?"/>
+      <xs:totalDigits value="7"/>
+      <xs:fractionDigits value="3"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="d7.3">
+    <xs:restriction base="xs:decimal">
+      <xs:pattern value="\d{1,7}(\.\d{1,3})?"/>
+      <xs:totalDigits value="10"/>
+      <xs:fractionDigits value="3"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="d8.3">
+    <xs:restriction base="xs:decimal">
+      <xs:pattern value="\d{1,8}(\.\d{1,3})?"/>
+      <xs:totalDigits value="11"/>
+      <xs:fractionDigits value="3"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="dakosyVoyageNumberType">
+    <xs:restriction base="xs:string">
+      <xs:length value="7"/>
+      <xs:pattern value="[A-Z]{3}[0-9]{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DangerousGoodsInformationsType">
+    <xs:sequence>
+      <xs:element name="DangerousGoodsInformation" type="DangerousGoodsInformationType" maxOccurs="99">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Gefahrgutinformation</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Dangerous goods information</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DangerousGoodsInformationType">
+    <xs:sequence>
+      <xs:element name="IMDGAmendment" type="an..10" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Amendment des IMDG-Codes auf das sich die Gefahrgutangaben beziehen</xs:documentation>
+          <xs:documentation source="Note1">090</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Amendment of IMDG code where the dangerous goods information refer to</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="IMDGClass" type="an..4">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">IMDG-Klasse - Prüfung gegen IMDG-Code, sowie Verträglichkeitsprüfung mit UN-Nummer</xs:documentation>
+          <xs:documentation source="Note1">063</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">IMDG class - check against the IMDG code as well as compatibility assessment with UN number</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="UNNumber" type="an..4">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">UN-Nummer - Prüfung gegen IMDG-Code sowie Verträglichkeitsprüfung mit IMDG-Klasse. NONE zulässig.</xs:documentation>
+          <xs:documentation source="Note1">064</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">UN number - check against the IMDG code as well as compatibility assessment with IMDG class. NONE permitted.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EmergencyProcedure" type="EmergencyProcedureType" minOccurs="0"/>
+      <xs:element name="FlashPoint" type="Temperature1000Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Flammpunkt - Pflicht bei Klasse 3 oder wenn 1. Stelle eines der Labels =3</xs:documentation>
+          <xs:documentation source="Note1">067</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Flashpoint - Mandatory in case of class 3 or if the 1. digit of a lable = 3</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Label" type="DGLabelType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="Desc">Label</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LimitedQuantityIndicator" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Kennzeichen begrenzte Menge (limited quantities)</xs:documentation>
+          <xs:documentation source="Note1">069</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Indicator limited quantity</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExceptedQuantityIndicator" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Kennzeichen „freigestellte Menge“ (Es handelt sich um eine neue Vorschrift für den Transport Freigestellter Mengen (Excepted Quantities), ähnlich wie beim transport Begrenzter Mengen (Limited Quantities) gelten auch hier vereinfachte Vorschriften beim Transport dieser Gefahrgüter.)</xs:documentation>
+          <xs:documentation source="Note1">073</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Indicator "excepted quantity" (This is a new regulation for the transport of excepted quantities, similar to the transport of limited quantity, simplified regulations apply to the transport of these dangerous goods.)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PackingGroup" type="an..3" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Verpackungsgruppe - Pflicht bei N.O.S.-Positionen (not otherwise specified), d.h. wenn im Element PropperShippingName eine der folgenden Zeichenfolgen auftritt:  NOS/nos/N.O.S./n.o.s./NAG/nag/N.A.G./n.a.g. Mögliche Inhalte I, II, III oder &gt;= (gilt nicht für Klasse 1, 2 und 7)</xs:documentation>
+          <xs:documentation source="Note1">071</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Packaging group - Mandatory in case of N.O.S. position (not otherwise specified), meaning if one of the following character sequences occurs in the element PropperShippingName: NOS/nos/N.O.S./n.o.s./NAG/nag/N.A.G./n.a.g.  Possible contents I, II, III &gt;= (does not apply for the class 1,2 and 7)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Properties" type="an..216" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Eigenschaften/Bemerkungen</xs:documentation>
+          <xs:documentation source="Note1">074</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Properties/remarks</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="WaterHazardClass" type="waterHazardClassCode" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">WGK-Code, Wassergefährdungsklasse - Codierung: 0/1/2/3</xs:documentation>
+          <xs:documentation source="Note1">075</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PropperShippingName" type="an..72">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Richtige technische Bezeichnung - Richtige technische Versandbezeichnung gem. IMDG-Code</xs:documentation>
+          <xs:documentation source="Note1">076</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Propper technical term - Propper technical shipping term according to IMDG code</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="TechnicalName" type="an..110" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Gefahrenauslöser - Pflicht bei Gefahrgütern, die in der allgemeinen Einleitung IMDG-Code Kapitel 7 aufgelistet sind.</xs:documentation>
+          <xs:documentation source="Note1">077</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Hazard trigger - Mandatory in case of dangerous goods listed in the general introduction IMDG code chapter 7.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GGVSAndADRInformation" type="DGGGVSAndADRInformationType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">GGVS-/ADR-Angaben - Angaben zur Gefahrgutverordnung Straße</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">GGVS/ADR specifications - Specifications referring to the dangerous goods regulations street</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExplosiveInformation" type="DGExplosiveInformationType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Erweiterte Informationen bei explosiven Gefahrstoffen</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Extended information in case of explosive dangerous goods</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RadioactivityInformation" type="DGRadioactivityInformationType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Erweiterte Informationen bei radioaktiven Gefahrstoffen</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Extended information in case of radioactive dangerous goods</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DeliveryType">
+    <xs:sequence>
+      <xs:element name="VehicleIdentification" type="an..13" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Waggon-/LKW-Kennzeichen</xs:documentation>
+          <xs:documentation source="Note1">044</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Wagon/truck number plate</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MeansOfTransport" type="meansOfTransportCode">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Code des Verkehrsträgers</xs:documentation>
+          <xs:documentation source="Note1">051</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DGExplosiveInformationType">
+    <xs:sequence>
+      <xs:element name="Stowage" type="an..3" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Staumethode (gem. 27. Amdt. IMDG-Code)</xs:documentation>
+          <xs:documentation source="Note1">070</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Stowage method (acc. to 27. Amdt. IMDG code)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CompatibilityGroup" type="an1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Verträglichkeitsgruppe</xs:documentation>
+          <xs:documentation source="Note1">083</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Compatibility group</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PowderWeight" type="Weight7.3Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Netto Pulvergewicht</xs:documentation>
+          <xs:documentation source="Note1">086</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Net powder weight</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DGGGVSAndADRInformationType">
+    <xs:sequence>
+      <xs:element name="Class" type="an..4" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Klasse</xs:documentation>
+          <xs:documentation source="Note1">078(1-4)</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Class</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Figure" type="an..4" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Ziffer</xs:documentation>
+          <xs:documentation source="Note1">078(5-8)</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Number</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DGLabelType">
+    <xs:sequence>
+      <xs:element name="Code" type="an..4" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="Desc">Code</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="FirstAdditionalLabel" type="an..4" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Erstes Zusatzlabel</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">First additional label</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SecondAdditionalLabel" type="an..4" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Zweites Zusatzlabel</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Second additional label</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MarinePollutantIndicator" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Label Wassergefährdend</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Indicator marine pollutant</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="dgPackingTypeCode">
+    <xs:annotation>
+      <xs:documentation xml:lang="DE" source="Desc">Verpackungstyp Klasse 7</xs:documentation>
+      <xs:documentation xml:lang="EN" source="Desc">Packing type class 7</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="A">
+        <xs:annotation>
+          <xs:documentation source="Name">Type A Package</xs:documentation>
+          <xs:documentation source="Desc">Type A Package</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="B(M)">
+        <xs:annotation>
+          <xs:documentation source="Name">Type B(M) Package</xs:documentation>
+          <xs:documentation source="Desc">Type B(M) Package</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="B(U)">
+        <xs:annotation>
+          <xs:documentation source="Name">Type B(U) Package</xs:documentation>
+          <xs:documentation source="Desc">Type B(U) Package</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="C">
+        <xs:annotation>
+          <xs:documentation source="Name">Type C Package</xs:documentation>
+          <xs:documentation source="Desc">Type C Package</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FREI">
+        <xs:annotation>
+          <xs:documentation source="Name">Excepted Package</xs:documentation>
+          <xs:documentation source="Desc">Excepted Package</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IP-1">
+        <xs:annotation>
+          <xs:documentation source="Name">Industrial Package Type 1 (Type IP-1 Package)</xs:documentation>
+          <xs:documentation source="Desc">Industrial Package Type 1 (Type IP-1 Package)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IP-2">
+        <xs:annotation>
+          <xs:documentation source="Name">Industrial Package Type 2 (Type IP-2 Package)</xs:documentation>
+          <xs:documentation source="Desc">Industrial Package Type 2 (Type IP-2 Package</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IP-3">
+        <xs:annotation>
+          <xs:documentation source="Name">Industrial Package Type 3 (Type IP-3 Package)</xs:documentation>
+          <xs:documentation source="Desc">Industrial Package Type 3 (Type IP-3 Package)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IP1">
+        <xs:annotation>
+          <xs:documentation source="Name">Industrial Package Type 1 (Type IP-1 Package) (Deprecated!)</xs:documentation>
+          <xs:documentation source="Desc">Industrial Package Type 1 (Type IP-1 Package) (Deprecated!)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IP2">
+        <xs:annotation>
+          <xs:documentation source="Name">Industrial Package Type 2 (Type IP-2 Package) (Deprecated!)</xs:documentation>
+          <xs:documentation source="Desc">Industrial Package Type 2 (Type IP-2 Package) (Deprecated!)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TYPA">
+        <xs:annotation>
+          <xs:documentation source="Name">Type A Package (Deprecated!)</xs:documentation>
+          <xs:documentation source="Desc">Type A Package (Deprecated!)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TYPB">
+        <xs:annotation>
+          <xs:documentation source="Name">Type B(U) Package (Deprecated!)</xs:documentation>
+          <xs:documentation source="Desc">Type B(U) Package (Deprecated!)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TYPC">
+        <xs:annotation>
+          <xs:documentation source="Name">Type C Package (Deprecated!)</xs:documentation>
+          <xs:documentation source="Desc">Type C Package (Deprecated!)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TYPM">
+        <xs:annotation>
+          <xs:documentation source="Name">Type B(M) Package (Deprecated!)</xs:documentation>
+          <xs:documentation source="Desc">Type B(M) Package (Deprecated!)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DGRadioactivityInformationType">
+    <xs:sequence>
+      <xs:element name="Activity" type="ActivityType">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Aktivität</xs:documentation>
+          <xs:documentation source="Note1">084</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Activity</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Category" type="an..4">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Kategorie</xs:documentation>
+          <xs:documentation source="Note1">085</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Category</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="TransportCode" type="an..3">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Transportkennzahl (Kein Pflicht bei Blattnummer 01-04)</xs:documentation>
+          <xs:documentation source="Note1">088</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Transport code (not required in case of sheet number 01-04)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PackingType" type="dgPackingTypeCode">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Verpackungstyp Klasse 7</xs:documentation>
+          <xs:documentation source="Note1">089</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DimensionsType">
+    <xs:sequence>
+      <xs:element name="Dimension" type="DimensionType" maxOccurs="999">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Maßangaben Spedition</xs:documentation>
+          <xs:documentation source="Note1">047</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Dimensions forwarding agency</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DimensionType">
+    <xs:sequence>
+      <xs:element name="Count" type="n..4" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Anzahl</xs:documentation>
+          <xs:documentation source="Note1">047(4-7)</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Number</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Size" type="SizeType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Längenangaben</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Length specifications</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Volume" type="VolumeType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Maßangaben zum Volumen</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Measurements volume</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EmergencyProcedureType">
+    <xs:sequence>
+      <xs:element name="FireSchedule" type="fireScheduleType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Unfallmerkblatt für Feuer (Emergency Procedure)</xs:documentation>
+          <xs:documentation source="Note1">065</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Accident leaflets for fire (emergency procedure)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SpillageSchedule" type="spillageScheduleType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Unfallmerkblatt für Leckage (Emergency Procedure)</xs:documentation>
+          <xs:documentation source="Note1">065</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Accident leaflets for leakage (emergency procedure)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="eoriNumberType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="4"/>
+      <xs:maxLength value="17"/>
+      <xs:pattern value="[A-Z]{2}[0-9A-Z]{2,15}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ExchangeType">
+    <xs:sequence>
+      <xs:element name="Transaction" type="TransactionType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="fireScheduleType">
+    <xs:restriction base="xs:string">
+      <xs:length value="3"/>
+      <xs:pattern value="F-[A-J]"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="GoodsDetailInformationType">
+    <xs:sequence>
+      <xs:element name="NumberOfPackages" type="n..6">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Anzahl der Packstücke</xs:documentation>
+          <xs:documentation source="Note1">B27</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Number of packages</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PackingCode" type="an2">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Verpackungscode. Codeliste unter: https://www.dakosy.de/fileadmin/Redakteur/Support/Dokumentation/Entwicklerdokumentation/EDI/Allgemein/Verpackungsartenschluessel.pdf</xs:documentation>
+          <xs:documentation source="Note1">C27</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Packing code. Code list under: https://www.dakosy.de/fileadmin/Redakteur/Support/Dokumentation/Entwicklerdokumentation/EDI/Allgemein/Verpackungsartenschluessel.pdf</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GrossWeight" type="Weight7.3Type">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Bruttogewicht (excl. Containertara), Rohmasse. Unter Rohmasse versteht man die Masse der Ware mit sämtlichen Umschließungen mit Ausnahme von Beförderungsmaterial und insbesondere Behältern (Containern).</xs:documentation>
+          <xs:documentation source="Note1">E27, 143</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Gross weight (excl. container tara), gross mass. The gross mass is understood to be the mass of the goods with all enclosures except the transport material and in particular containers.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MarksAndNumbers" type="an..1024" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Marke und Nummer</xs:documentation>
+          <xs:documentation source="Note1">A27 + H27</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Marks and numbers</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GoodsDescription" type="an..1024" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Inhaltsbeschreibung</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Note1">D27 + I27</xs:documentation>
+          <xs:documentation source="Desc">Goods description</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MeansOfTransportID" type="an..13" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Verkehrsträgerkennzeichen</xs:documentation>
+          <xs:documentation source="Note1">F27</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Means of transport indicator</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Remarks" type="an..1024" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Bemerkungen</xs:documentation>
+          <xs:documentation source="Remark">G27</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Remarks</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GoodsItemsType">
+    <xs:sequence>
+      <xs:element name="GoodsItem" type="GoodsItemType" maxOccurs="999">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Eine Kollizeile</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">A package (goods item) line</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GoodsItemType">
+    <xs:sequence>
+      <xs:element name="GoodsItemId" type="an..35">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Innerhalb einer Nachricht einmalige und eindeutige Goods-Item-Identifikationsnummer</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Unique and unambiguous goods item identification number within a message</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DetailInformation" type="GoodsDetailInformationType">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Verschiedene Detailinformationen zum Kolli</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Different detail information regarding the package (goods item)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ContainerReferences" type="ContainerReferencesType" minOccurs="0"/>
+      <xs:element name="VehicleInformation" type="VehicleInformationType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Informationen zu einem Fahrzeug</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Information to a vehicle</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DangerousGoodsInformations" type="DangerousGoodsInformationsType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Gefahrgutinformationen - Hinweis: Für WKS ist hiermit die Angabe von mehreren UN-Nummern durch Angabe mehrerer DangerousGoodsInformation-Elemente möglich. In allen anderen Fällen wird nur das erste Element der Liste ausgewertet.</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Dangerous goods information - Note: For WKS, it is possible to specify multiple UN numbers by including multiple DangerousGoodsInformation elements. In all other cases, only the first element of the list will be evaluated.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Dimensions" type="DimensionsType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Maßangaben Spedition</xs:documentation>
+          <xs:documentation source="Note1">047</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Dimensions forwarding agency</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Packages" type="PackagesType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Alle Positionen zu einem Kolli</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">All positions to a package line</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HeaderType">
+    <xs:sequence>
+      <xs:element name="Type" type="portOrderTypeCode">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Note1">002+103+SAC (siehe Change Log)</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Note1">002+103+SAC (see Change Log)</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Port Order Type</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RequestDateTime" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Datum und Uhrzeit der Anfrage durch den Spediteur. ISO 8601 Koordinierte Weltzeit (UTC) oder lokale Zeit mit Differenz zu UTC. Deprecated seit Version 1.3.0, wird nicht verarbeitet.</xs:documentation>
+          <xs:documentation source="Note1">004</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Date and time of request by the forwarder. ISO 8601 Coordinated Universal Time (UTC) or local time with offset to UTC. Deprecated since Version 1.3.0, will not be processed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IdentificationType">
+    <xs:sequence>
+      <xs:element name="EORINumber" type="eoriNumberType">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">EORI-Nummer</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">EORI number</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="BranchNumber" type="n4">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Niederlassungsnummer, wurde keine Niederlassungsnummer beantragt, ist 0000 einzutragen.</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Branch number, set to 0000 if not registered.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LengthType">
+    <xs:simpleContent>
+      <xs:extension base="n..4">
+        <xs:attribute name="unit" type="sizeUnitCode">
+          <xs:annotation>
+            <xs:documentation xml:lang="DE" source="Desc">Maßeinheit der Längenangabe</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LocationsType">
+    <xs:sequence>
+      <xs:element name="Location" type="LocationType" maxOccurs="2">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Ein Ort innerhalb der Sendungsroute.</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">A location within the shipment route.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LocationType">
+    <xs:sequence>
+      <xs:element name="LocationType" type="locationTypeCode">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Beschreibung der Art des Orts</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Note1">Neu: Location Type FD = Code 098 und Name 026, Location Type POD = Code 025 oder 097 und Name 024</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Note1">New: Location Type FD = Code 098 and Name 026, Location Type POD = Code 025 or 097 and Name 024</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Describes the location type</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Code" type="an5" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation source="Desc">UN-Locode</xs:documentation>
+          <xs:documentation source="Note1">025/097/098</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Ein UN-Locode</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Name" type="an..35" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Name des Ortes</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Name of location</xs:documentation>
+          <xs:documentation source="Note1">024/026</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="locationTypeCode">
+    <xs:annotation>
+      <xs:documentation xml:lang="DE" source="Desc">Beschreibung der Art des Orts</xs:documentation>
+      <xs:documentation xml:lang="EN" source="Desc">Describes the location type</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FD">
+        <xs:annotation>
+          <xs:documentation source="Name">Final destination</xs:documentation>
+          <xs:documentation source="Desc">Final destination</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="POD">
+        <xs:annotation>
+          <xs:documentation source="Name">Port of discharge</xs:documentation>
+          <xs:documentation source="Desc">Port of discharge</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="meansOfTransportCode">
+    <xs:annotation>
+      <xs:documentation xml:lang="DE" source="Desc">Code des Verkehrsträgers</xs:documentation>
+      <xs:documentation xml:lang="EN" source="Desc">Code of means of transport</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AB">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Außenbords</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Außenbords</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Outboard</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Outboard</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AN">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Andere</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Andere</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Other</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Other</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="BS">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Binnenschiff</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Binnenschiff</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Inland vessel</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Inland vessel</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FE">
+        <xs:annotation>
+          <xs:documentation source="Name">Feeder</xs:documentation>
+          <xs:documentation source="Desc">Feeder</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LK">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Lastkraftwagen (Truck)</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Lastkraftwagen (Truck)</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Truck</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Truck</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SC">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Schute (Barge)</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Schute (Barge)</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Barge</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Barge</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SS">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Seeschiff</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Seeschiff</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Seagoing/Ocean vessel</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Seagoing/Ocean vessel</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TL">
+        <xs:annotation>
+          <xs:documentation source="Name">Trailer</xs:documentation>
+          <xs:documentation source="Desc">Trailer</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="UN">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Unbekannt</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Unbekannt</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Unknown</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Unknown</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="WG">
+        <xs:annotation>
+          <xs:documentation source="Name">Waggon</xs:documentation>
+          <xs:documentation source="Desc">Waggon</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:length value="2"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="MessageType">
+    <xs:sequence>
+      <xs:element name="Header" type="HeaderType"/>
+      <xs:element name="Locations" type="LocationsType">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Dieses Segment fasst Informationen zur Route der Sendung zusammen.</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">This segment summarizes information concerning the shipment route.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="References" type="ReferencesType"/>
+      <xs:element name="Participants" type="ParticipantsType">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">In diesem Element werden Informationen zu verschiedenen Prozessbeteiligten zusammengefasst.</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">This element summarizes information concerning the different process participants.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="TransportDetails" type="TransportDetailsType">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">In diesem Segment werden die Angaben zur Verschiffung zusammengefasst.</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">This segment provides information concerning the shipment.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="QuayOrderDetails" type="QuayOrderDetailsType"/>
+      <xs:element name="OutboardLoadingIndicator" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Handelt es sich um eine Außenbordverladung? (true = Ja, false = Nein)</xs:documentation>
+          <xs:documentation source="Note1">029</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Is it about outboard loading? (true = yes, false = no)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ATLASSelfDeclaredIndicator" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Wurde die ATLAS Anmeldung selbst erstellt? (true = Ja, false = Nein) Deprecated seit Version 1.3.0, wird nicht verarbeitet.</xs:documentation>
+          <xs:documentation source="Note1">033</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Is it about a ATLAS self-declaration? (true = yes, false = no) Deprecated since version 1.3.0, will not be processed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DangerousGoodsIssuer" type="an..72" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Aussteller (natürliche Person) der verantwortlich ist für die Gefahrgutangaben.</xs:documentation>
+          <xs:documentation source="Note1">079</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Issuer (individual) in charge for the DG specifications</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GoodsItems" type="GoodsItemsType">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Alle Kollies zu dieser Sendung</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">All packages of this shipment</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Containers" type="ContainersType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Dieses Element fasst die Informationen zu allen Containern eines Batchs zusammen.</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">This element summarizes information to all containers of a batch.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="n..4">
+    <xs:restriction base="xs:integer">
+      <xs:pattern value="\d{1,4}"/>
+      <xs:minInclusive value="1"/>
+      <xs:totalDigits value="4"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="n..6">
+    <xs:restriction base="xs:integer">
+      <xs:pattern value="\d{1,6}"/>
+      <xs:minInclusive value="1"/>
+      <xs:totalDigits value="6"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="n4">
+    <xs:restriction base="xs:integer">
+      <xs:pattern value="\d{4}"/>
+      <xs:totalDigits value="4"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="OrdersType">
+    <xs:sequence>
+      <xs:element name="TypeOfService" type="typeOfServiceCode" maxOccurs="5">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Leistungs-/Autragsart</xs:documentation>
+          <xs:documentation source="Note1">049</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PackagesType">
+    <xs:sequence>
+      <xs:element name="Package" type="PackageType" maxOccurs="999">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Eine Position zu einem Kolli</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">A position to a goods item</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PackageType">
+    <xs:sequence>
+      <xs:element name="PackageId" type="an..35">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Innerhalb eines Goods-Items einmalige und eindeutige Package-Identifikationsnummer</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">A unique and unambiguous package identification number</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DetailInformation" type="GoodsDetailInformationType">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Verschiedene Detailinformationen zum Kolli</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Several detail information to goods item</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="VehicleInformation" type="VehicleInformationType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Informationen zu einem Fahrzeug</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Information to a vehicle</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DangerousGoodsInformations" type="DangerousGoodsInformationsType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Gefahrgutinformationen</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Dangerous goods informations</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Dimensions" type="DimensionsType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Maßangaben Spedition</xs:documentation>
+          <xs:documentation source="Note1">047</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Measurements forwarding agency</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ParticipantsType">
+    <xs:sequence>
+      <xs:element name="Participant" type="ParticipantType" maxOccurs="999">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Dieses Segment fasst Informationen zu jeweils einem Prozessbeteiligten zusammen.</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">This segment summarizes information concerning one process participant at a time.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ParticipantType">
+    <xs:sequence>
+      <xs:element name="ParticipantType" type="participantTypeCode">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Art des Beteiligten</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Note1">Neu: Participant Type AGENT = DAKOSY Code 006, Name 007, Quay Account Number 009; Participant Type ISSUER = DAKOSY Code 015, Identification EORI Number 040 (1-17). Identification Branch Number 040 (18-21), Name 016, Quay Account Number 017, Customer Reference 018, Contact Name 010, Contact email 032, Contact FAX 036, Contact Phone 037; Participant Type PARTY PAYING = DAKOSY Code 011, Name 012, Quay Account Number 013, Customer Reference 014; Participant Type WAREHOUSE = DAKOSY Code 005; Participant Type WKS_CARRIER = EORINumber 173</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Note1">New: Participant Type AGENT = DAKOSY Code 006, Name 007, Quay Account Number 009; Participant Type ISSUER = DAKOSY Code 015, Identification EORI Number 040 (1-17). Identification Branch Number 040 (18-21), Name 016, Quay Account Number 017, Customer Reference 018, Contact Name 010, Contact email 032, Contact FAX 036, Contact Phone 037; Participant Type PARTY PAYING = DAKOSY Code 011, Name 012, Quay Account Number 013, Customer Reference 014; Participant Type WAREHOUSE = DAKOSY Code 005; Participant Type WKS_CARRIER = EORINumber 173</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DakosyCode" type="an..4" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">DAKOSY Teilnehmercode</xs:documentation>
+          <xs:documentation source="Note1">M**/V**/K**/031/011</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">DAKOSY participant code</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Identification" type="IdentificationType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Identifizierung eines Beteiligten mittels EORI und Niederlassungsnummer</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Identification of participant via EORI and branch number</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Name" type="an..40" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Name des Beteiligten</xs:documentation>
+          <xs:documentation source="Note1">007/012/016</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Name of participant</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="QuayAccountNumber" type="an..6" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Kai-Konto-Nummer des Beteiligten</xs:documentation>
+          <xs:documentation source="Note1">009/013/017</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Quai account number of participant</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CustomerReference" type="an..16" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Individuelle Positionsnummer des Beteiligten</xs:documentation>
+          <xs:documentation source="Note1">014/018</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Individual position number of participant</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Contact" type="ContactType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Kontaktangaben eines Ansprechpartners (Name, E-Mail, FAX-Nummer und Telefonnummer)</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Information of contact person (name, email, fax number and phone number)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="participantTypeCode">
+    <xs:annotation>
+      <xs:documentation xml:lang="DE" source="Desc">Art des Beteiligten</xs:documentation>
+      <xs:documentation xml:lang="EN" source="Desc">Participant type</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AGENT">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Schiffsmakler</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Schiffsmakler</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Shipping agent</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Shipping agent</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ISSUER">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Aussteller</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Aussteller</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Issuer</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Issuer</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PARTY_PAYING">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Sich zur Zahlung verpflichtende Partei</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Sich zur Zahlung verpflichtende Partei</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Party paying</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Party commiting to payment</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="WAREHOUSE">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Schuppen</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Schuppen</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Name">Warehouse</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Warehouse</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="PortOrderElementType">
+    <xs:complexContent>
+      <xs:extension base="ExchangeType">
+        <xs:sequence>
+          <xs:element name="Message" type="MessageType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="portOrderTypeCode">
+    <xs:annotation>
+      <xs:documentation xml:lang="EN" source="Desc">Port Order Type</xs:documentation>
+      <xs:documentation xml:lang="DE" source="Desc">Port Order Typ / Anmeldeart</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="A08">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Kaianlieferungsantrag</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Kaianlieferungsantrag</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Quay order for inbound delivery</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Quay order for inbound delivery</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="A09">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Kaiauslieferungsantrag</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Kaiauslieferungsantrag</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Quay order for outbound delivery</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Quay order for outbound delivery</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="A15">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Antrag auf Kaileistungen</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Application for quay services</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Application for quay services</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Antrag auf Kaileistungen</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="A18">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Verpflichtungsschein</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Certificate of obligation</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Certificate of obligation</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Verpflichtungsschein</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="QuayOrderDetailsType">
+    <xs:sequence>
+      <xs:element name="Orders" type="OrdersType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">In diesem Segment werden alle zusätzlichen Leistungs- und Auftragsarten gesammelt. Die Angabe der Leistungsarten in diesem Segment ist derzeit nicht verpflichtend. Es gilt die textuelle Beantragung im Vermerkfeld.</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">This segment is used to collect all additional types of services and orders. The specification of service types in this segment is not required at the moment. The textual application in the note field applies.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Delivery" type="DeliveryType">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Dieses Segment fasst die Informationen zur Anlieferung zusammen.</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">This segment provides information concerning the delivery.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DeliveryTo" type="an..30" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Zur Verfügung/Auslieferung der Firma</xs:documentation>
+          <xs:documentation source="Note1">055</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">At the disposal/delivery of the company</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AdditionalRemarks" type="an..4lines" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Zusätzliche Vermerke - Bemerkungen etc., Angabe von 1-4 Zeilen mit jeweils maximal 72 Zeichen</xs:documentation>
+          <xs:documentation source="Note1">030</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Additional information - remarks etc. Specification of 1-4 columns with each max. 72 characters</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AdditionalRequest" type="an..35" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Zusätzliche Anträge</xs:documentation>
+          <xs:documentation source="Note1">046</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Additional requests</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="WarehouseNumber" type="an..11" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">LL-/Lager-Nummer</xs:documentation>
+          <xs:documentation source="Note1">045</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Warehouse number</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SpecialAgreement" type="an..8" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Sonderabsprachen (z.B. Sondertarife, Offerten)</xs:documentation>
+          <xs:documentation source="Note1">041</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Special agreements (e.g. special rate, offers)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GoodsInTransitBySeaIndicator" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Handelt es sich um Seedurchfuhrgüter? (true = Ja, false = Nein)</xs:documentation>
+          <xs:documentation source="Note1">042</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Is it about marine transit goods? (true = yes, false = no)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="radioactiveActivityUnitCode">
+    <xs:annotation>
+      <xs:documentation xml:lang="DE" source="Desc">Einheit der Aktivität</xs:documentation>
+      <xs:documentation xml:lang="EN" source="Desc">Unit of activity</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="2Q">
+        <xs:annotation>
+          <xs:documentation source="Name">Kilobecquerel</xs:documentation>
+          <xs:documentation source="Desc">Kilobecquerel</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="4N">
+        <xs:annotation>
+          <xs:documentation source="Name">Megabecquerel</xs:documentation>
+          <xs:documentation source="Desc">Megabecquerel</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="BQ">
+        <xs:annotation>
+          <xs:documentation source="Name">Becquerel (Deprecated!)</xs:documentation>
+          <xs:documentation source="Desc">Becquerel (Deprecated!)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="BQL">
+        <xs:annotation>
+          <xs:documentation source="Name">Becquerel</xs:documentation>
+          <xs:documentation source="Desc">Becquerel</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="GBQ">
+        <xs:annotation>
+          <xs:documentation source="Name">Gigabecquerel</xs:documentation>
+          <xs:documentation source="Desc">Gigabecquerel</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="KBQ">
+        <xs:annotation>
+          <xs:documentation source="Name">Kilobecquerel (Deprecated!)</xs:documentation>
+          <xs:documentation source="Desc">Kilobecquerel (Deprecated!)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MBQ">
+        <xs:annotation>
+          <xs:documentation source="Name">Megabecquerel (Deprecated!)</xs:documentation>
+          <xs:documentation source="Desc">Megabecquerel (Deprecated!)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PBQ">
+        <xs:annotation>
+          <xs:documentation source="Name">Petabecquerel</xs:documentation>
+          <xs:documentation source="Desc">Petabecquerel</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TBQ">
+        <xs:annotation>
+          <xs:documentation source="Name">Terabecquerel</xs:documentation>
+          <xs:documentation source="Desc">Terabecquerel</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ReferencesType">
+    <xs:sequence>
+      <xs:element name="BookingNumber" type="an..20" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Buchungsnummer</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Note1">Feld 062</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Booking number</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Note1">Field 062</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ForwarderReference" type="an..16">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Referenznummer des Spediteurs</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Note1">Referenzsatz/Referenznummer</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Reference number of forwarder</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Note1">Reference sentence/reference number</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="BillOfLadingNumber" type="an..10" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">BL-Nummer</xs:documentation>
+          <xs:documentation source="Note1">052</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">BL number</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SizeType">
+    <xs:sequence>
+      <xs:element name="Length" type="LengthType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Länge</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Length</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Width" type="LengthType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Breite</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Width</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Height" type="LengthType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Höhe</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Height</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="sizeUnitCode">
+    <xs:annotation>
+      <xs:documentation xml:lang="DE" source="Desc">Maßeinheit der Höhenangabe</xs:documentation>
+      <xs:documentation xml:lang="EN" source="Desc">Unit of size specifications</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CMT">
+        <xs:annotation>
+          <xs:documentation source="Name">Zentimeter/Centimeter</xs:documentation>
+          <xs:documentation source="Desc">Zentimeter/Centimeter</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="spillageScheduleType">
+    <xs:restriction base="xs:string">
+      <xs:length value="3"/>
+      <xs:pattern value="S-[A-Z]"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Temperature1000Type">
+    <xs:simpleContent>
+      <xs:extension base="temperature1000Type">
+        <xs:attribute name="unit" type="temperatureUnitCode">
+          <xs:annotation>
+            <xs:documentation xml:lang="DE" source="Desc">Einheit der Temperatur</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="temperature1000Type">
+    <xs:restriction base="xs:integer">
+      <xs:maxInclusive value="999"/>
+      <xs:minInclusive value="-999"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Temperature100Type" mixed="false">
+    <xs:simpleContent>
+      <xs:extension base="temperature100Type">
+        <xs:attribute name="unit" type="temperatureUnitCode">
+          <xs:annotation>
+            <xs:documentation xml:lang="DE" source="Desc">Maßeinheit der Temperatur</xs:documentation>
+            <xs:documentation xml:lang="EN" source="Desc">Unit of temperature</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="temperature100Type">
+    <xs:restriction base="xs:integer">
+      <xs:maxInclusive value="99"/>
+      <xs:minInclusive value="-99"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="TemperatureRangeType">
+    <xs:sequence>
+      <xs:element name="Min" type="Temperature100Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Minimale Temperatur</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Minimum temperature</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Max" type="Temperature100Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Maximale Temperatur</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Maximum temperature</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="temperatureUnitCode">
+    <xs:annotation>
+      <xs:documentation xml:lang="DE" source="Desc">Einheit der Temperatur</xs:documentation>
+      <xs:documentation xml:lang="EN" source="Desc">Unit of temperature</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CEL">
+        <xs:annotation>
+          <xs:documentation source="Name">Celsius</xs:documentation>
+          <xs:documentation source="Desc">Celsius</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:length value="3"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="TransactionType">
+    <xs:sequence>
+      <xs:element name="IOPartner" type="an..4">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">DAKOSY Teilnehmercode</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">DAKOSY participant code</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="IOReference" type="an..35">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Einmalige und eindeutige Transaktionsidentifikationsreferenz</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Unique and unambiguous transaction identification reference</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="IODateTime" type="xs:dateTime">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Datum und Uhrzeit der Nachrichtenerstellung - ISO 8601 Koordinierte Weltzeit (UTC) oder lokale Zeit mit Differenz zu UTC.</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Date and time of message creation - ISO 8601 Coordinated Universal Time (UTC) or local time with offset to UTC.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MessageVersion" type="an..12">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Verwendete Nachrichtenversion</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Used message version</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="TestIndicator" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Testkennzeichen - Gibt an, ob es sich bei der Nachricht um eine Testnachricht handelt. Wenn das Element nicht oder als "true" angegeben wurde, handelt es sich um eine Produktionsnachricht.</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Test indicator - Indicates whether or not the message is a test message. If the element ist not specified or specified as "true", it is about a production message.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TransportDetailsType">
+    <xs:sequence>
+      <xs:element name="VesselIdentification" type="VesselIdentificationType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Angaben zur Schiffsidentifikation (Name, IMO-Nummer, Rufzeichen)</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Information concerning the vessel identification (name, IMO number, call sign)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Schedule" type="VesselScheduleType">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Angaben zur geplanten Schiffsreise</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Information concerning the planned vessel voyage</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="typeOfServiceCode">
+    <xs:annotation>
+      <xs:documentation xml:lang="DE" source="Desc">Leistungs-/Autragsart</xs:documentation>
+      <xs:documentation xml:lang="EN" source="Desc">Service/order type</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="480">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Markieren</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Markieren</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Labelling</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Labelling</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="490">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Ummarkieren</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Ummarkieren</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Re-labelling</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Re-labelling</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="500">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Sortieren</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Sortieren</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Sorting</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Sorting</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="510">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Zurückstellen und Freigeben von Waren zu Arbitragezwecken. Bei Freigabe wird Drittschrift zurückgegeben.</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Zurückstellen und Freigeben von Waren zu Arbitragezwecken. Bei Freigabe wird Drittschrift zurückgegeben.</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">
+Putting aside and releasing of goods for arbitrage purposes. Upon release third copy
+is returned.
+          </xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">
+Putting aside and releasing of goods for arbitrage purposes. Upon release third copy
+is returned.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="520">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Ausbessern</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Ausbessern</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Maintenance and repair</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Maintenance and repair</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="530">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Zählen</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Zählen</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Counting</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Counting</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="540">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Messen</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Messen</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Measuring (only for LCL)</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Measuring (only for LCL)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="550">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Probeentnahme</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Probeentnahme</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Sampling</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Sampling</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="560">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Aufsicht</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Aufsicht</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Surveillance</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Surveillance</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="570">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Inhalts-/Zustandsfeststellung</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Inhalts-/Zustandsfeststellung</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Assessing content/condition</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Assessing content/condition</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="580">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Container packen</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Container packen</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Pack/unpack containers</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Pack/unpack containers</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="590">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Wiegen</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Wiegen</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Weighing</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Weighing</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="591">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Einzeln wiegen</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Einzeln wiegen</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Weigh individually</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Weigh individually</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="592">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Schalenweise wiegen</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Schalenweise wiegen</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Weigh in trays</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Weigh in trays</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="593">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Partieweise wiegen</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Partieweise wiegen</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Weigh in batches</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Weigh in batches</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="594">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Mit Fördermittel wiegen</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Mit Fördermittel wiegen</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Weigh with mechanical handling equipment</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Weigh with mechanical handling equipment</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="595">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Ohne Fördermittel wiegen</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Ohne Fördermittel wiegen</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Weigh without mechanical handling equipment</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Weigh without mechanical handling equipment</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="596">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Tarierung (feststellen Tara)</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Tarierung (feststellen Tara)</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Classification (determine tara)</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Classification (determine tara)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="999">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Name">Sonstiges</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">Sonstiges</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Name">Other</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Other</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="VehicleInformationType">
+    <xs:sequence>
+      <xs:element name="ChassisNumber" type="chassisNumberType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Chassisnummer eines Fahrzeuges (Fahrgestellnummer) - Hinweis: Die Buchstaben "I" und "O" sind nicht zulässig. Stattdessen ist immer die Ziffer "1" (Eins) bzw. "0" (Null) zu senden.</xs:documentation>
+          <xs:documentation source="Note1">092</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Chassis number of a vehicle - Note: The character "I" and "O" are not permitted. Instead, always send the digit "1" (one) and "0" (zero).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EquipmentIndicator" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Gibt an, ob es sich um Zubehör zur Autoverladung handelt. true = Ja, ChassisNumber muss angegeben werden, false oder nicht vorhanden = Nein</xs:documentation>
+          <xs:documentation source="Note1">167(Z)</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Indicates whether it is vehicle loading equipment. true = yes, ChassisNumber must be filled, false or not available = no.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AdditionalCargoIndicator" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Gibt an, ob es sich um Beiladung zur Autoverladung handelt. true = Ja, ChassisNumber darf nicht angegeben werden, false oder nicht vorhanden = Nein.</xs:documentation>
+          <xs:documentation source="Note1">167(B)</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Indicates whether it is vehicle loading additional cargo. true = yes, ChassisNumber must be empty, false or not available = no.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VesselIdentificationType">
+    <xs:sequence>
+      <xs:element name="VesselName" type="an..50" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Name des Schiffes</xs:documentation>
+          <xs:documentation source="Note1">019</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Vessel name</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CallSign" type="an..7" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Rufzeichen des Schiffes</xs:documentation>
+          <xs:documentation source="Note1">095</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Call sign of the vessel</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="IMONumber" type="an..7" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">IMO-Nummer des Schiffes</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Note1">Neu</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">IMO number of the vessel</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Note1">New</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VesselScheduleType">
+    <xs:sequence>
+      <xs:element name="EstimatedShippingDate" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Geplantes Verschiffungsdatum</xs:documentation>
+          <xs:documentation source="Note1">020</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Planned date of shipment</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DakosyVoyageNumber" type="dakosyVoyageNumberType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">DAKOSY-Schiffsreisenummer</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">DAKOSY voyage number</xs:documentation>
+          <xs:documentation source="Note1">021</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CarrierSCACCode" type="an..4" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">SCAC-Code des Reeders</xs:documentation>
+          <xs:documentation source="Note1">034</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">SCAC code of shipowner</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="VoyageNumber" type="an..8" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Schiffsreisenummer des Reeders</xs:documentation>
+          <xs:documentation source="Note1">050</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Voyage number of shipowner</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Volume4.3Type">
+    <xs:simpleContent>
+      <xs:extension base="d4.3">
+        <xs:attribute name="unit" type="volumeUnitCode">
+          <xs:annotation>
+            <xs:documentation xml:lang="DE" source="Desc">Maßeinheit der Volumenangabe</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="Volume8.3Type">
+    <xs:simpleContent>
+      <xs:extension base="d8.3">
+        <xs:attribute name="unit" type="volumeUnitCode">
+          <xs:annotation>
+            <xs:documentation xml:lang="DE" source="Desc">Maßeinheit der Volumenangabe</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="VolumeType">
+    <xs:sequence>
+      <xs:element name="Single" type="Volume4.3Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Einzel-Coubage</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Single coubage</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Total" type="Volume8.3Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="DE" source="Desc">Gesamt-Coubage</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">Total coubage</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="volumeUnitCode">
+    <xs:annotation>
+      <xs:documentation xml:lang="DE" source="Desc">Maßeinheit der Volumenangabe</xs:documentation>
+      <xs:documentation xml:lang="EN" source="Desc">Unit of volume specifications</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MTQ">
+        <xs:annotation>
+          <xs:documentation source="Name">Kubikmeter</xs:documentation>
+          <xs:documentation source="Desc">Kubikmeter</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="waterHazardClassCode">
+    <xs:annotation>
+      <xs:documentation xml:lang="DE" source="Desc">WGK-Code, Wassergefährdungsklasse - Codierung: 0/1/2/3</xs:documentation>
+      <xs:documentation xml:lang="EN" source="Desc">WGK code, water hazard class - coding: 0/1/2/3</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="EN" source="Name">not assigned</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Name">nicht zugeordnet</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">nicht zugeordnet</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">not assigned</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1">
+        <xs:annotation>
+          <xs:documentation xml:lang="EN" source="Name">low water hazard material</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Name">schwach wassergefährdender Stoff</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">schwach wassergefährdender Stoff</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">low water hazard material</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="2">
+        <xs:annotation>
+          <xs:documentation xml:lang="EN" source="Name">water hazard material</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Name">wassergefährdender Stoff</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">wassergefährdender Stoff</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">water hazard material</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="3">
+        <xs:annotation>
+          <xs:documentation xml:lang="EN" source="Name">high water hazard material</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Name">stark wassergefährdender Stoff</xs:documentation>
+          <xs:documentation xml:lang="DE" source="Desc">stark wassergefährdender Stoff</xs:documentation>
+          <xs:documentation xml:lang="EN" source="Desc">high water hazard material</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Weight7.3Type">
+    <xs:simpleContent>
+      <xs:extension base="d7.3">
+        <xs:attribute name="unit" type="weightUnitCode">
+          <xs:annotation>
+            <xs:documentation xml:lang="DE" source="Desc">Maßeinheit der Gewichtsangabe</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="weightUnitCode">
+    <xs:annotation>
+      <xs:documentation xml:lang="DE" source="Desc">Maßeinheit der Gewichtsangabe</xs:documentation>
+      <xs:documentation xml:lang="EN" source="Desc">Unit of measurement of the weight</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="KGM">
+        <xs:annotation>
+          <xs:documentation source="Name">Kilogramm</xs:documentation>
+          <xs:documentation source="Desc">Kilogramm</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:length value="3"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,167 @@
+<Window x:Class="PathFinder.DcsaSettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="DCSA Schema URLs"
+        Width="620"
+        Height="420"
+        MinWidth="400"
+        MinHeight="300"
+        WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False"
+        ResizeMode="CanResizeWithGrip"
+        Background="{DynamicResource AppBackground}">
+
+    <Grid Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0"
+                Padding="16,12,16,8"
+                BorderBrush="{DynamicResource GridSplitterColor}"
+                BorderThickness="0,0,0,1">
+            <TextBlock Text="SwaggerHub API URLs used for DCSA schema sorting"
+                       Foreground="{DynamicResource LabelForeground}"
+                       FontSize="12"/>
+        </Border>
+
+        <!-- URL list + edit controls -->
+        <Grid Grid.Row="1"
+              Margin="16,8,16,8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <ListBox x:Name="urlListBox"
+                     Grid.Row="0"
+                     Background="{DynamicResource EditorBackground}"
+                     Foreground="{DynamicResource EditorForeground}"
+                     BorderBrush="{DynamicResource SeparatorColor}"
+                     BorderThickness="1"
+                     SelectionChanged="UrlListBox_SelectionChanged"
+                     KeyDown="UrlListBox_KeyDown"/>
+
+            <Grid Grid.Row="1"
+                  Margin="0,8,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="urlTextBox"
+                         Grid.Column="0"
+                         Background="{DynamicResource EditorBackground}"
+                         Foreground="{DynamicResource EditorForeground}"
+                         BorderBrush="{DynamicResource SeparatorColor}"
+                         Padding="4,3"
+                         FontFamily="Consolas"
+                         FontSize="12"
+                         VerticalContentAlignment="Center"/>
+                <StackPanel Grid.Column="1"
+                            Orientation="Horizontal"
+                            Margin="8,0,0,0">
+                    <Button Content="Update"
+                            Click="UpdateUrl_Click"
+                            Padding="10,4"
+                            Margin="0,0,4,0"
+                            Cursor="Hand"
+                            Background="{DynamicResource AccentBlue}"
+                            Foreground="White"
+                            BorderThickness="0"/>
+                    <Button Content="Add"
+                            Click="AddUrl_Click"
+                            Padding="10,4"
+                            Margin="0,0,4,0"
+                            Cursor="Hand"
+                            Background="{DynamicResource ActionButtonBackground}"
+                            Foreground="White"
+                            BorderThickness="0"/>
+                    <Button x:Name="deleteButton"
+                            Content="Delete"
+                            Click="DeleteUrl_Click"
+                            Padding="10,4"
+                            Cursor="Hand"
+                            IsEnabled="False"
+                            Foreground="White"
+                            BorderThickness="0">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background"
+                                        Value="{DynamicResource ActionButtonBackground}"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}"
+                                                    Padding="{TemplateBinding Padding}"
+                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                                <ContentPresenter HorizontalAlignment="Center"
+                                                                  VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsEnabled"
+                                             Value="False">
+                                        <Setter Property="Background"
+                                                Value="{DynamicResource ActionButtonDisabled}"/>
+                                        <Setter Property="Foreground"
+                                                Value="{DynamicResource ActionButtonDisabledForeground}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <TextBlock Grid.Row="2"
+                       Text="Enter a SwaggerHub API URL (e.g. https://api.swaggerhub.com/apis/dcsaorg/DCSA_EBL)"
+                       Foreground="{DynamicResource PlaceholderForeground}"
+                       FontSize="11"
+                       Margin="0,4,0,0"/>
+        </Grid>
+
+        <!-- Button bar -->
+        <Border Grid.Row="2"
+                Padding="16,10"
+                BorderBrush="{DynamicResource GridSplitterColor}"
+                BorderThickness="0,1,0,0">
+            <Grid>
+                <Button Content="Reset to Defaults"
+                        HorizontalAlignment="Left"
+                        Click="ResetDefaults_Click"
+                        Padding="12,5"
+                        Cursor="Hand"
+                        Background="{DynamicResource ActionButtonBackground}"
+                        Foreground="White"
+                        BorderThickness="0"/>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right">
+                    <Button Content="OK"
+                            Click="OK_Click"
+                            IsDefault="True"
+                            Padding="20,5"
+                            Margin="0,0,8,0"
+                            Cursor="Hand"
+                            Background="{DynamicResource AccentBlue}"
+                            Foreground="White"
+                            BorderThickness="0"/>
+                    <Button Content="Cancel"
+                            Click="Cancel_Click"
+                            IsCancel="True"
+                            Padding="20,5"
+                            Cursor="Hand"
+                            Background="{DynamicResource ActionButtonBackground}"
+                            Foreground="White"
+                            BorderThickness="0"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

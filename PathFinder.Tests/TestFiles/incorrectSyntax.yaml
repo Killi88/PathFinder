@@ -1,0 +1,6 @@
+store:
+  name: "John
+  missing_colon value
+  books:
+    - title: foo
+    - [invalid: yaml

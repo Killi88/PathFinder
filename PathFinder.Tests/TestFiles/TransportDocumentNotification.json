@@ -1,0 +1,222 @@
+{
+    "TargetDeserializationType": "TransportDocumentNotification",
+    "Sender": "MAERSK",
+    "JsonContent": {
+        "specversion": "1.0",
+        "id": "3cecb101-7a1a-43a4-9d62-e88a131651e2",
+        "source": "https://member.com/",
+        "type": "org.dcsa.transport-document.v3",
+        "time": "2018-04-05T17:31:00Z",
+        "datacontenttype": "application/json",
+        "subscriptionReference": "EBL001",
+        "data": {
+            "transportDocumentStatus": "DRAFT",
+            "transportDocumentReference": "HHL71800000",
+            "transportDocument": {
+                "transportDocumentReference": "HHL71800000",
+                "shippingInstructionsReference": "fc5009a7-25ad-4bb0-9892-4e2dea6bcdd9",
+                "freightPaymentTermCode": "PRE",
+                "declaredValue": 50000,
+                "declaredValueCurrency": "USD",
+                "receiptTypeAtOrigin": "CY",
+                "deliveryTypeAtDestination": "CY",
+                "cargoMovementTypeAtOrigin": "FCL",
+                "serviceContractReference": "SCR-1234-REGULAR",
+                "contractQuotationReference": "CQN-1234-REGULAR",
+                "carrierCode": "MSCU",
+                "shippedOnBoardDate": "2023-12-20",
+                "issueDate": "2023-12-21",
+                "carrierClauses": [
+                    "FREIGHT PREPAID. THE MERCHANT UNDERTAKES AND WARRANTS THAT, UNDER NO CIRCUMSTANCES"
+                ],
+                "transports": {
+                    "plannedDepartureDate": "2023-12-20",
+                    "plannedArrivalDate": "2023-12-22",
+                    "preCarriageBy": "TRUCK",
+                    "onCarriageBy": "RAIL",
+                    "placeOfReceipt": {
+                        "locationName": "Aarhus Depot",
+                        "UNLocationCode": "DKAAR"
+                    },
+                    "portOfLoading": {
+                        "UNLocationCode": "DKAAR"
+                    },
+                    "portOfDischarge": {
+                        "UNLocationCode": "DEBRV"
+                    },
+                    "placeOfDelivery": {
+                        "locationName": "Bremen Terminal",
+                        "UNLocationCode": "DEBRV"
+                    },
+                    "vesselVoyages": [
+                        {
+                            "vesselName": "MSC Gulsun",
+                            "carrierExportVoyageNumber": "402E"
+                        }
+                    ]
+                },
+                "charges": [
+                    {
+                        "chargeName": "Ocean Freight",
+                        "currencyAmount": 1200,
+                        "currencyCode": "USD",
+                        "paymentTermCode": "PRE",
+                        "calculationBasis": "Per container",
+                        "unitPrice": 1200,
+                        "quantity": 1
+                    }
+                ],
+                "placeOfIssue": {
+                    "UNLocationCode": "DKAAR"
+                },
+                "invoicePayableAt": {
+                    "UNLocationCode": "DKAAR"
+                },
+                "documentParties": {
+                    "shipper": {
+                        "partyName": "DCSA CTK",
+                        "displayedAddress": [
+                            "Strawinskylaan 4117",
+                            "1077 ZX Amsterdam",
+                            "Netherlands"
+                        ],
+                        "reference": "SHP-REF-20-100TPC",
+                        "partyContactDetails": [
+                            {
+                                "name": "Shipping Contact",
+                                "email": "shipper@dcsa.example.org"
+                            }
+                        ]
+                    },
+                    "consignee": {
+                        "partyName": "ACME Import GmbH",
+                        "displayedAddress": [
+                            "Industriestrasse 12",
+                            "28195 Bremen",
+                            "Germany"
+                        ]
+                    },
+                    "issuingParty": {
+                        "partyName": "Mediterranean Shipping Company",
+                        "address": {
+                            "street": "Chemin Rieu",
+                            "streetNumber": "12-14",
+                            "city": "Geneva",
+                            "countryCode": "CH"
+                        }
+                    },
+                    "other": [
+                        {
+                            "partyFunction": "DDR",
+                            "party": {
+                                "partyName": "Example Freight Forwarder Pty Ltd",
+                                "reference": "FFW-REF-C2001875592-V2",
+                                "address": {
+                                    "street": "1 Forwarder Street",
+                                    "city": "Sydney",
+                                    "countryCode": "AU"
+                                },
+                                "partyContactDetails": [
+                                    {
+                                        "name": "Forwarder Ops",
+                                        "email": "ops@forwarder.example"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "partyFunction": "N1",
+                            "party": {
+                                "partyName": "Notify Logistics BV",
+                                "address": {
+                                    "street": "Hafenstrasse",
+                                    "streetNumber": "9",
+                                    "city": "Hamburg",
+                                    "countryCode": "DE"
+                                }
+                            }
+                        }
+                    ]
+                },
+                "consignmentItems": [
+                    {
+                        "carrierBookingReference": "CBR_123_REGULAR",
+                        "descriptionOfGoods": [
+                            "Shoes - black"
+                        ],
+                        "shippingMarks": [
+                            "ACME SHOES 001-400",
+                            "HANDLE WITH CARE",
+                            "KEEP DRY"
+                        ],
+                        "cargoItems": [
+                            {
+                                "equipmentReference": "NARU3472484",
+                                "cargoGrossWeight": {
+                                    "value": 12000,
+                                    "unit": "KGM"
+                                },
+                                "cargoGrossVolume": {
+                                    "value": 10,
+                                    "unit": "MTQ"
+                                },
+                                "outerPackaging": {
+                                    "numberOfPackages": 10,
+                                    "packageCode": "PLT",
+                                    "description": "Pallet",
+                                    "dangerousGoods": [
+                                        {
+                                            "UNNumber": "3100",
+                                            "properShippingName": "OXIDIZING SOLID, SELF-HEATING, N.O.S.",
+                                            "technicalName": "tname",
+                                            "imoClass": "5.1",
+                                            "subsidiaryRisk1": "4.2",
+                                            "packingGroup": 1,
+                                            "isMarinePollutant": true,
+                                            "isLimitedQuantity": true,
+                                            "limits": {
+                                                "flashPoint": 30,
+                                                "temperatureUnit": "CEL"
+                                            },
+                                            "emergencyContactDetails": {
+                                                "contact": "WAYNE WU",
+                                                "phone": "+61402211563"
+                                            },
+                                            "EMSNumber": "F-A S-Q",
+                                            "grossWeight": {
+                                                "value": 10,
+                                                "unit": "KGM"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "utilizedTransportEquipments": [
+                    {
+                        "isShipperOwned": false,
+                        "seals": [
+                            {
+                                "number": "DCSA-CTK-1234",
+                                "source": "CAR"
+                            }
+                        ],
+                        "equipment": {
+                            "ISOEquipmentCode": "22G1",
+                            "equipmentReference": "NARU3472484"
+                        },
+                        "isNonOperatingReefer": false,
+                        "activeReeferSettings": {
+                            "temperatureSetpoint": -18,
+                            "temperatureUnit": "CEL",
+                            "airExchangeSetpoint": 40,
+                            "airExchangeUnit": "MQH"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

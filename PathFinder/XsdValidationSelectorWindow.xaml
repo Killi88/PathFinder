@@ -1,0 +1,95 @@
+<Window x:Class="PathFinder.XsdValidationSelectorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Validate XML Against XSD"
+        Width="480"
+        Height="340"
+        MinWidth="360"
+        MinHeight="260"
+        WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False"
+        ResizeMode="CanResizeWithGrip"
+        Background="{DynamicResource AppBackground}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0"
+                Padding="16,12,16,8"
+                BorderBrush="{DynamicResource GridSplitterColor}"
+                BorderThickness="0,0,0,1">
+            <TextBlock x:Name="headerText"
+                       Foreground="{DynamicResource LabelForeground}"
+                       FontSize="12"
+                       TextWrapping="Wrap"/>
+        </Border>
+
+        <!-- Tab list -->
+        <Grid Grid.Row="1"
+              Margin="16,10,16,8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Text="Open tabs:"
+                       Foreground="{DynamicResource LabelForeground}"
+                       FontSize="11"
+                       Margin="0,0,0,4"/>
+
+            <ListBox x:Name="tabListBox"
+                     Grid.Row="1"
+                     Background="{DynamicResource EditorBackground}"
+                     Foreground="{DynamicResource EditorForeground}"
+                     BorderBrush="{DynamicResource SeparatorColor}"
+                     BorderThickness="1"
+                     MouseDoubleClick="TabListBox_MouseDoubleClick"
+                     SelectionChanged="TabListBox_SelectionChanged"/>
+        </Grid>
+
+        <!-- Button bar -->
+        <Border Grid.Row="2"
+                Padding="16,10"
+                BorderBrush="{DynamicResource GridSplitterColor}"
+                BorderThickness="0,1,0,0">
+            <Grid>
+                <Button x:Name="browseButton"
+                        HorizontalAlignment="Left"
+                        Click="Browse_Click"
+                        Padding="12,5"
+                        Cursor="Hand"
+                        Background="{DynamicResource ActionButtonBackground}"
+                        Foreground="White"
+                        BorderThickness="0"/>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right">
+                    <Button x:Name="validateButton"
+                            Content="Validate"
+                            Click="Validate_Click"
+                            IsDefault="True"
+                            IsEnabled="False"
+                            Padding="20,5"
+                            Margin="0,0,8,0"
+                            Cursor="Hand"
+                            Background="{DynamicResource AccentBlue}"
+                            Foreground="White"
+                            BorderThickness="0"/>
+                    <Button Content="Cancel"
+                            Click="Cancel_Click"
+                            IsCancel="True"
+                            Padding="20,5"
+                            Cursor="Hand"
+                            Background="{DynamicResource ActionButtonBackground}"
+                            Foreground="White"
+                            BorderThickness="0"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

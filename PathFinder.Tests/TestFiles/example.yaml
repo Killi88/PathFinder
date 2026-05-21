@@ -1,0 +1,15 @@
+store:
+  name: John
+  age: 30
+  active: true
+  books:
+    - title: foo
+      price: 9.99
+    - title: bar
+      price: 12.50
+  tags:
+    - fiction
+    - bestseller
+metadata:
+  created: 2024-01-15
+  version: null

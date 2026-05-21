@@ -1,0 +1,42 @@
+# Build output
+bin/
+obj/
+out/
+publish/
+artifacts/
+dist/
+
+# Visual Studio / Rider / VS Code
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+
+# Logs / temp
+*.log
+*.tmp
+*.cache
+
+# EDIFACT scraper
+Build/.scraper_cache/
+Build/scrape_log.txt
+PathFinder/Resources/EdifactDefinitions.json
+
+# OS files
+Thumbs.db
+Desktop.ini
+
+# Local app backups / exported data
+*_backup_*.json
+*.runtimeconfig.dev.json
+
+#Claude
+.claude

@@ -1,0 +1,21 @@
+{
+  "TargetDeserializationType": "ShippingInstructionsNotification",
+  "Sender": "MAERSK",
+  "JsonContent": {
+    "specversion": "1.0",
+    "id": "84c0c663-3921-4414-876a-5309405d5203",
+    "source": "https://api.carrier.com/v3/shipping-instructions",
+    "type": "org.dcsa.shipping-instructions.v3",
+    "time": "2024-03-20T14:30:00Z",
+    "datacontenttype": "application/json",
+    "subscriptionReference": "30675492-50ff-4e17-a7df-7a487a8ad343",
+    "data": {
+      "shippingInstructionsStatus": "RECEIVED",
+      "updatedShippingInstructionsStatus": "UPDATE_RECEIVED",
+      "shippingInstructionReference": "e0559d83-00e2-438e-afd9-fdd610c1a008",
+      "transportDocumentReference": "987654321",
+      "feedbacks": [
+      ]
+    }
+  }
+}

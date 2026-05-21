@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<n1:AcknowledgementMessage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:n1="http://cargowise.com/ehub/products/ocm/gtnexus/2015/03" AcknowledgedType="String" xsi:schemaLocation="http://cargowise.com/ehub/products/ocm/gtnexus/2015/03 AcknowledgementMessage.xsd">
+	<TransactionInfo>
+		<MessageSender>String</MessageSender>
+		<MessageRecipient>String</MessageRecipient>
+		<MessageID>String</MessageID>
+		<Created>2001-12-17T09:30:47Z</Created>
+		<FileName>String</FileName>
+	</TransactionInfo>
+	<AcknowledgementGroup>
+		<MessageID>255</MessageID>
+		<FileName>String</FileName>
+		<Acknowledgement ShipmentId="String" Sequence="255" GtnId="0">
+			<Detail Severity="255" AuditID="0">String</Detail>
+			<References>
+				<Reference referenceType="String">String</Reference>
+			</References>
+		</Acknowledgement>
+	</AcknowledgementGroup>
+</n1:AcknowledgementMessage>

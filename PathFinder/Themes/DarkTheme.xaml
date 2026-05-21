@@ -1,0 +1,349 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Main window background -->
+    <SolidColorBrush x:Key="AppBackground"
+                     Color="#1E1E1E"/>
+
+    <!-- Toolbar, side panel background -->
+    <SolidColorBrush x:Key="PanelBackground"
+                     Color="#2D2D30"/>
+
+    <!-- AvalonEdit editor background -->
+    <SolidColorBrush x:Key="EditorBackground"
+                     Color="#1E1E1E"/>
+
+    <!-- AvalonEdit editor text color -->
+    <SolidColorBrush x:Key="EditorForeground"
+                     Color="#D4D4D4"/>
+
+    <!-- Inactive tab background -->
+    <SolidColorBrush x:Key="TabBackground"
+                     Color="#2D2D30"/>
+
+    <!-- Active/selected tab background -->
+    <SolidColorBrush x:Key="TabActiveBackground"
+                     Color="#1E1E1E"/>
+
+    <!-- Tab text color -->
+    <SolidColorBrush x:Key="TabForeground"
+                     Color="#AAAAAA"/>
+
+    <!-- Active tab text color -->
+    <SolidColorBrush x:Key="TabActiveForeground"
+                     Color="#FFFFFF"/>
+
+    <!-- Tab border color -->
+    <SolidColorBrush x:Key="TabBorderBrush"
+                     Color="#555555"/>
+
+    <!-- Menu bar background -->
+    <SolidColorBrush x:Key="MenuBackground"
+                     Color="#2D2D30"/>
+
+    <!-- Menu bar text -->
+    <SolidColorBrush x:Key="MenuForeground"
+                     Color="#CCCCCC"/>
+
+    <!-- Menu item background -->
+    <SolidColorBrush x:Key="MenuItemBackground"
+                     Color="#2D2D30"/>
+
+    <!-- Menu item hover background -->
+    <SolidColorBrush x:Key="MenuItemHover"
+                     Color="#3E3E42"/>
+
+    <!-- Context menu background -->
+    <SolidColorBrush x:Key="ContextMenuBackground"
+                     Color="#2D2D30"/>
+
+    <!-- Context menu border -->
+    <SolidColorBrush x:Key="ContextMenuBorder"
+                     Color="#555555"/>
+
+    <!-- Context menu text -->
+    <SolidColorBrush x:Key="ContextMenuForeground"
+                     Color="#CCCCCC"/>
+
+    <!-- Toolbar button background -->
+    <SolidColorBrush x:Key="ButtonBackground"
+                     Color="Transparent"/>
+
+    <!-- Toolbar button text/icon color -->
+    <SolidColorBrush x:Key="ButtonForeground"
+                     Color="#CCCCCC"/>
+
+    <!-- Toolbar button hover background -->
+    <SolidColorBrush x:Key="ButtonHover"
+                     Color="#3E3E42"/>
+
+    <!-- Toolbar button border -->
+    <SolidColorBrush x:Key="ButtonBorder"
+                     Color="Transparent"/>
+
+    <!-- Toolbar button text/icon color when disabled -->
+    <SolidColorBrush x:Key="ButtonForegroundDisabled"
+                     Color="#555555"/>
+
+    <!-- Text boxes, XPath input background -->
+    <SolidColorBrush x:Key="InputBackground"
+                     Color="#1E1E1E"/>
+
+    <!-- Text boxes text color -->
+    <SolidColorBrush x:Key="InputForeground"
+                     Color="#CCCCCC"/>
+
+    <!-- Text boxes border -->
+    <SolidColorBrush x:Key="InputBorder"
+                     Color="#555555"/>
+
+    <!-- Divider lines -->
+    <SolidColorBrush x:Key="SeparatorColor"
+                     Color="#555555"/>
+
+    <!-- Scrollbar background track -->
+    <SolidColorBrush x:Key="ScrollBarTrack"
+                     Color="#2D2D30"/>
+
+    <!-- Scrollbar thumb color -->
+    <SolidColorBrush x:Key="ScrollBarThumb"
+                     Color="#686868"/>
+
+    <!-- Scrollbar thumb hover color -->
+    <SolidColorBrush x:Key="ScrollBarThumbHover"
+                     Color="#9E9E9E"/>
+
+    <!-- XPath results list background -->
+    <SolidColorBrush x:Key="ResultsBackground"
+                     Color="#252526"/>
+
+    <!-- XPath results item hover -->
+    <SolidColorBrush x:Key="ResultsItemHover"
+                     Color="#2A2D2E"/>
+
+    <!-- XPath results item selected -->
+    <SolidColorBrush x:Key="ResultsItemSelected"
+                     Color="#094771"/>
+
+    <!-- XPath results text color -->
+    <SolidColorBrush x:Key="ResultsForeground"
+                     Color="#CCCCCC"/>
+
+    <!-- XPath results secondary/preview text -->
+    <SolidColorBrush x:Key="ResultsSecondary"
+                     Color="#888888"/>
+
+    <!-- Status bar background -->
+    <SolidColorBrush x:Key="StatusBarBackground"
+                     Color="#007ACC"/>
+
+    <!-- Status bar text -->
+    <SolidColorBrush x:Key="StatusBarForeground"
+                     Color="#FFFFFF"/>
+
+    <!-- Grid/tree view background -->
+    <SolidColorBrush x:Key="GridViewBackground"
+                     Color="#1E1E1E"/>
+
+    <!-- Grid/tree view text -->
+    <SolidColorBrush x:Key="GridViewForeground"
+                     Color="#D4D4D4"/>
+
+    <!-- Section label text (e.g. "XPath Expression", "Results:") -->
+    <SolidColorBrush x:Key="LabelForeground"
+                     Color="#9CDCFE"/>
+
+    <!-- Tree item hover background -->
+    <SolidColorBrush x:Key="TreeItemHover"
+                     Color="#2A2D2E"/>
+
+    <!-- Tree item selected background -->
+    <SolidColorBrush x:Key="TreeItemSelected"
+                     Color="#094771"/>
+
+    <!-- All Paths panel: path column color -->
+    <SolidColorBrush x:Key="AllPathsPathColor"
+                     Color="#9CDCFE"/>
+
+    <!-- All Paths panel: value column color -->
+    <SolidColorBrush x:Key="AllPathsValueColor"
+                     Color="#CE9178"/>
+
+    <!-- Messages panel: error text color -->
+    <SolidColorBrush x:Key="MessagesErrorColor"
+                     Color="#F48771"/>
+    <SolidColorBrush x:Key="MessagesSuccessColor"
+                     Color="#4EC9B0"/>
+
+    <!-- Menu item highlight background -->
+    <SolidColorBrush x:Key="MenuHighlight"
+                     Color="#1B3A4B"/>
+
+    <!-- Menu item highlight text -->
+    <SolidColorBrush x:Key="MenuHighlightForeground"
+                     Color="#FFFFFF"/>
+
+    <!-- Menu item disabled text -->
+    <SolidColorBrush x:Key="MenuDisabledForeground"
+                     Color="#606060"/>
+
+    <!-- Menu keyboard shortcut text -->
+    <SolidColorBrush x:Key="MenuGestureForeground"
+                     Color="#808080"/>
+
+    <!-- Text input caret color -->
+    <SolidColorBrush x:Key="CaretBrush"
+                     Color="#AEAFAD"/>
+
+    <!-- Text input selection highlight -->
+    <SolidColorBrush x:Key="SelectionBrush"
+                     Color="#264F78"/>
+
+    <!-- Results list line number text -->
+    <SolidColorBrush x:Key="ResultsLineNumber"
+                     Color="#858585"/>
+
+    <!-- Placeholder / hint text -->
+    <SolidColorBrush x:Key="PlaceholderForeground"
+                     Color="#888888"/>
+
+    <!-- Accent blue (active tab border, toggle checked) -->
+    <SolidColorBrush x:Key="AccentBlue"
+                     Color="#007ACC"/>
+
+    <!-- Action button (Execute) background -->
+    <SolidColorBrush x:Key="ActionButtonBackground"
+                     Color="#0E639C"/>
+
+    <!-- Action button hover -->
+    <SolidColorBrush x:Key="ActionButtonHover"
+                     Color="#1177BB"/>
+
+    <!-- Action button pressed -->
+    <SolidColorBrush x:Key="ActionButtonPressed"
+                     Color="#0A4F7A"/>
+
+    <!-- Action button disabled -->
+    <SolidColorBrush x:Key="ActionButtonDisabled"
+                     Color="#111111"/>
+    <SolidColorBrush x:Key="ActionButtonDisabledForeground"
+                     Color="#2A2A2A"/>
+
+    <!-- Status bar button hover overlay -->
+    <SolidColorBrush x:Key="StatusBarButtonHover"
+                     Color="#20FFFFFF"/>
+
+    <!-- Status bar button pressed overlay -->
+    <SolidColorBrush x:Key="StatusBarButtonPressed"
+                     Color="#38FFFFFF"/>
+
+    <!-- Splash screen title text -->
+    <SolidColorBrush x:Key="SplashTitleForeground"
+                     Color="#FFFFFF"/>
+
+    <!-- Splash screen subtitle text -->
+    <SolidColorBrush x:Key="SplashSubtitleForeground"
+                     Color="#9CDCFE"/>
+
+    <!-- Splash screen progress bar track -->
+    <SolidColorBrush x:Key="SplashProgressBackground"
+                     Color="#2D2D30"/>
+
+    <!-- Splash screen status text -->
+    <SolidColorBrush x:Key="SplashStatusForeground"
+                     Color="#888888"/>
+
+    <!-- Editor line number gutter text -->
+    <SolidColorBrush x:Key="LineNumberForeground"
+                     Color="#858585"/>
+
+    <!-- Tab close/pin button default foreground -->
+    <SolidColorBrush x:Key="TabButtonForeground"
+                     Color="#808080"/>
+
+    <!-- Tab close button hover foreground -->
+    <SolidColorBrush x:Key="TabButtonHoverForeground"
+                     Color="#FFFFFF"/>
+
+    <!-- Pinned tab indicator color -->
+    <SolidColorBrush x:Key="PinActiveColor"
+                     Color="#FFC83D"/>
+
+    <!-- XPath/JSONPath result line highlight (semi-transparent) -->
+    <SolidColorBrush x:Key="ResultHighlightBrush"
+                     Color="#50007ACC"/>
+
+    <!-- Search panel match marker (semi-transparent orange) -->
+    <SolidColorBrush x:Key="SearchMarkerBrush"
+                     Color="#A0FFA500"/>
+
+    <!-- Help window footer background -->
+    <SolidColorBrush x:Key="HelpFooterBackground"
+                     Color="#252526"/>
+
+    <!-- Help window footer border -->
+    <SolidColorBrush x:Key="HelpFooterBorder"
+                     Color="#333333"/>
+
+    <!-- Help window footer text -->
+    <SolidColorBrush x:Key="HelpFooterForeground"
+                     Color="#888888"/>
+
+    <!-- Help window HTML body background -->
+    <Color x:Key="HelpHtmlBackground">#1E1E1E</Color>
+    <!-- Help window HTML body text -->
+    <Color x:Key="HelpHtmlForeground">#CCCCCC</Color>
+    <!-- Help window HTML h1 -->
+    <Color x:Key="HelpHtmlH1">#FFFFFF</Color>
+    <!-- Help window HTML h2 -->
+    <Color x:Key="HelpHtmlH2">#4EC9B0</Color>
+    <!-- Help window HTML h3 -->
+    <Color x:Key="HelpHtmlH3">#9CDCFE</Color>
+    <!-- Help window HTML inline code text -->
+    <Color x:Key="HelpHtmlCode">#DCDCAA</Color>
+    <!-- Help window HTML code/pre background -->
+    <Color x:Key="HelpHtmlCodeBackground">#2D2D2D</Color>
+    <!-- Help window HTML link color -->
+    <Color x:Key="HelpHtmlLink">#9CDCFE</Color>
+    <!-- Help window HTML horizontal rule -->
+    <Color x:Key="HelpHtmlHr">#333333</Color>
+    <!-- Help window HTML table border -->
+    <Color x:Key="HelpHtmlTableBorder">#444444</Color>
+    <!-- Help window HTML table header background -->
+    <Color x:Key="HelpHtmlTableHeader">#2D2D2D</Color>
+
+    <!-- Tree view inactive selection background -->
+    <SolidColorBrush x:Key="TreeItemInactiveSelected"
+                     Color="#2A4A6A"/>
+
+    <!-- Schema visualization colors -->
+    <SolidColorBrush x:Key="SchemaComplexColor"
+                     Color="#4EC9B0"/>
+    <SolidColorBrush x:Key="SchemaSimpleColor"
+                     Color="#9CDCFE"/>
+    <SolidColorBrush x:Key="SchemaSimpleBadge"
+                     Color="#2878B5"/>
+    <SolidColorBrush x:Key="SchemaAttributeColor"
+                     Color="#DCDCAA"/>
+    <SolidColorBrush x:Key="SchemaRequiredBadge"
+                     Color="#F14C4C"/>
+    <SolidColorBrush x:Key="SchemaOptionalBadge"
+                     Color="#89D185"/>
+    <SolidColorBrush x:Key="SchemaChoiceBadge"
+                     Color="#CCA700"/>
+    <SolidColorBrush x:Key="SchemaRecursiveBadge"
+                     Color="#888888"/>
+    <SolidColorBrush x:Key="SchemaTypeLabelColor"
+                     Color="#808080"/>
+    <SolidColorBrush x:Key="SchemaDocColor"
+                     Color="#6A9955"/>
+    <SolidColorBrush x:Key="SchemaRestrictionColor"
+                     Color="#CE9178"/>
+    <SolidColorBrush x:Key="SchemaTreeNodeBorder"
+                     Color="#3C3C3C"/>
+    <SolidColorBrush x:Key="SchemaTreeNodeBackground"
+                     Color="#252526"/>
+    <SolidColorBrush x:Key="SchemaTreeConnectorLine"
+                     Color="#555555"/>
+
+</ResourceDictionary>
