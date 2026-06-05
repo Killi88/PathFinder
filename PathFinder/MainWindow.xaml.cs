@@ -135,7 +135,8 @@ public partial class MainWindow : Window
         double AllPathsPathColumnWidth = 250,
         double AllPathsValueColumnWidth = 150,
         List<string>? DcsaSchemaUrls = null,
-        List<string>? RecentFiles = null);
+        List<string>? RecentFiles = null,
+        List<ToolbarItemConfig>? ToolbarLayout = null);
 
     internal static readonly List<string> DefaultDcsaSchemaUrls =
     [
@@ -332,6 +333,59 @@ public partial class MainWindow : Window
     private double _rightPanelFontSize = RightPanelFontSizeDefault;
     private string? _lastOpenDirectory;
 
+    // ──────────────────────────── toolbar ────────────────────────────
+    private List<ToolbarItemConfig> _toolbarLayout = new(DefaultToolbarLayout);
+    private readonly Dictionary<string, Button> _toolbarButtons = new();
+    private readonly Dictionary<string, TextBlock> _toolbarDynamicLabels = new();
+
+    public sealed record ToolbarButtonDefinition(
+        string Id,
+        string Icon,
+        double IconFontSize,
+        string Label,
+        string Tooltip,
+        Action<object, RoutedEventArgs> ClickHandler,
+        string? XName = null,
+        string? DynamicLabelKey = null,
+        bool HasDualIcon = false,
+        string? SecondIcon = null,
+        double SecondIconFontSize = 10);
+
+    private ToolbarButtonDefinition[] ToolbarButtonRegistry => [
+        new("New",          "📄", 14, "New",           "New File (Ctrl+N)",                                       (s,e) => NewFile()),
+        new("Open",         "📂", 14, "Open",          "Open File (Ctrl+O)",                                      (s,e) => OpenFile()),
+        new("Save",         "💾", 14, "Save",          "Save File (Ctrl+S)",                                      (s,e) => SaveFile()),
+        new("SaveAll",      "💾", 14, "Save All",      "Save All (Ctrl+Shift+S)",                                 (s,e) => SaveAll(),       HasDualIcon: true, SecondIcon: "💾", SecondIconFontSize: 10),
+        new("Undo",         "↩",  14, "Undo",          "Undo (Ctrl+Z)",                                           (s,e) => { if (ActiveTab?.Editor.CanUndo == true) ActiveTab.Editor.Undo(); }),
+        new("Redo",         "↪",  14, "Redo",          "Redo (Ctrl+Y)",                                           (s,e) => { if (ActiveTab?.Editor.CanRedo == true) ActiveTab.Editor.Redo(); }),
+        new("AutoIndent",   "⌨",  14, "Auto Indent",   "Auto Indent (Ctrl+Shift+F)",                              (s,e) => FormatDocument()),
+        new("Minify",       "⊟",  14, "Minify",        "Minify (Ctrl+Shift+M)",                                   (s,e) => MinifyDocument(), XName: "minifyButton"),
+        new("WordWrap",     "↵",  14, "Word Wrap",     "Toggle Word Wrap",                                        (s,e) => ToggleWordWrap(), XName: "wordWrapButton"),
+        new("Whitespace",   "·",  14, "Whitespace",    "Show Whitespace Characters",                              (s,e) => ToggleShowWhitespace(), XName: "showWhitespaceButton"),
+        new("ConvertFormat","⇄",  14, "To JSON",       "Convert XML ↔ JSON",                                      (s,e) => ConvertFormat(),  XName: "convertFormatButton",  DynamicLabelKey: "convertFormatLabel"),
+        new("ConvertYaml",  "⇄",  14, "To YAML",       "Convert to YAML",                                         (s,e) => ConvertToYaml(),  XName: "convertToYamlButton",  DynamicLabelKey: "convertToYamlLabel"),
+        new("SampleXml",    "⚙",  14, "Sample XML",    "Generate a sample XML document from this XSD schema",      (s,e) => GenerateSampleXmlFromXsd(), XName: "generateSampleXmlButton"),
+        new("SampleJson",   "⚙",  14, "Sample JSON",   "Generate a sample JSON document from this JSON/YAML Schema",(s,e) => GenerateSampleJsonFromSchema(), XName: "generateSampleJsonButton"),
+        new("ValidateXsd",  "✓",  14, "Validate",      "Validate XML against an XSD schema",                      (s,e) => OpenValidateXsdDialog(), XName: "validateXsdButton", DynamicLabelKey: "validateXsdLabel"),
+        new("CopyExcel",    "📋", 14, "Copy for Excel", "Copy to Excel (copies syntax-highlighted HTML to clipboard)", (s,e) => CopyToExcel(), XName: "copyToExcelButton"),
+        new("SortDcsa",     "⇅",  14, "Sort DCSA",     "Sort JSON properties by DCSA schema field order",         (s,e) => SortDcsa_Click(s, (RoutedEventArgs)e), XName: "sortDcsaButton"),
+    ];
+
+    internal static readonly List<ToolbarItemConfig> DefaultToolbarLayout =
+    [
+        new("New"), new("Open"), new("Save"), new("SaveAll"),
+        new(ToolbarItemConfig.SeparatorId),
+        new("Undo"), new("Redo"),
+        new(ToolbarItemConfig.SeparatorId),
+        new("AutoIndent"), new("Minify"), new("WordWrap"), new("Whitespace"),
+        new(ToolbarItemConfig.SeparatorId),
+        new("ConvertFormat"), new("ConvertYaml"), new("SampleXml"), new("SampleJson"), new("ValidateXsd"),
+        new(ToolbarItemConfig.SeparatorId),
+        new("CopyExcel"),
+        new(ToolbarItemConfig.SeparatorId),
+        new("SortDcsa"),
+    ];
+
     // ──────────────────────────── init ────────────────────────────
     public MainWindow()
     {
@@ -450,7 +504,8 @@ public partial class MainWindow : Window
             AllPathsPathColumnWidth: pathW,
             AllPathsValueColumnWidth: valueW,
             DcsaSchemaUrls: _dcsaSchemaUrls,
-            RecentFiles: _recentFiles));
+            RecentFiles: _recentFiles,
+            ToolbarLayout: _toolbarLayout));
     }
 
     private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -462,6 +517,9 @@ public partial class MainWindow : Window
             _dcsaSchemaUrls = new List<string>(urls);
         if (themeSettings?.RecentFiles is { Count: > 0 } recent)
             _recentFiles = new List<string>(recent);
+        if (themeSettings?.ToolbarLayout is { Count: > 0 } tbLayout)
+            _toolbarLayout = new List<ToolbarItemConfig>(tbLayout);
+        BuildToolbar();
         PopulateRecentFilesMenu();
 
         // Restore previously open files, or start with one blank tab
@@ -611,6 +669,117 @@ public partial class MainWindow : Window
             // Rebuild grid if it's currently visible so node colors update
             if (tab.IsGridMode)
                 SwitchToGridView(tab);
+        }
+
+        // Rebuild toolbar so dynamic-resource colors take effect
+        BuildToolbar();
+    }
+
+    // ──────────────────────────── toolbar builder ────────────────────────────
+    private void BuildToolbar()
+    {
+        toolbarPanel.Children.Clear();
+        _toolbarButtons.Clear();
+        _toolbarDynamicLabels.Clear();
+
+        var registry = ToolbarButtonRegistry.ToDictionary(d => d.Id);
+        var toolbarStyle = (Style)FindResource("ToolbarButton");
+
+        foreach (var item in _toolbarLayout)
+        {
+            if (item.IsSeparator)
+            {
+                var sep = new System.Windows.Shapes.Rectangle { Width = 1, Margin = new Thickness(6, 2, 6, 2) };
+                sep.SetResourceReference(System.Windows.Shapes.Shape.FillProperty, "SeparatorColor");
+                toolbarPanel.Children.Add(sep);
+                continue;
+            }
+
+            if (!registry.TryGetValue(item.Id, out var def))
+                continue; // unknown button id — skip
+
+            var btn = new Button
+            {
+                Style = toolbarStyle,
+                ToolTip = def.Tooltip,
+                Margin = new Thickness(2, 0, 0, 0),
+            };
+            btn.Click += (s, e) => def.ClickHandler(s, e);
+
+            var sp = new StackPanel { Orientation = Orientation.Horizontal };
+            sp.VerticalAlignment = VerticalAlignment.Center;
+
+            if (def.HasDualIcon && def.SecondIcon is not null)
+            {
+                var icon1 = new TextBlock
+                {
+                    Text = def.Icon,
+                    FontSize = def.IconFontSize,
+                    Margin = new Thickness(0, 0, 1, 0),
+                };
+                icon1.SetResourceReference(TextBlock.ForegroundProperty, "ButtonForeground");
+                sp.Children.Add(icon1);
+
+                var icon2 = new TextBlock
+                {
+                    Text = def.SecondIcon,
+                    FontSize = def.SecondIconFontSize,
+                    Margin = new Thickness(0, 0, 5, 0),
+                };
+                icon2.SetResourceReference(TextBlock.ForegroundProperty, "ButtonForeground");
+                sp.Children.Add(icon2);
+            }
+            else
+            {
+                var icon = new TextBlock
+                {
+                    Text = def.Icon,
+                    FontSize = def.IconFontSize,
+                    Margin = new Thickness(0, 0, 5, 0),
+                };
+                icon.SetResourceReference(TextBlock.ForegroundProperty, "ButtonForeground");
+                sp.Children.Add(icon);
+            }
+
+            var label = new TextBlock
+            {
+                Text = def.Label,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
+            label.SetResourceReference(TextBlock.ForegroundProperty, "ButtonForeground");
+            sp.Children.Add(label);
+
+            btn.Content = sp;
+            toolbarPanel.Children.Add(btn);
+
+            if (def.XName is not null)
+                _toolbarButtons[def.XName] = btn;
+
+            if (def.DynamicLabelKey is not null)
+                _toolbarDynamicLabels[def.DynamicLabelKey] = label;
+        }
+
+        // Restore toggle button visual state
+        RestoreToolbarToggleStates();
+    }
+
+    private void RestoreToolbarToggleStates()
+    {
+        var tab = ActiveTab;
+        if (tab is null) return;
+
+        if (_toolbarButtons.TryGetValue("wordWrapButton", out var wrapBtn))
+        {
+            wrapBtn.Background = tab.Editor.WordWrap
+                ? (Brush)FindResource("AccentBlue")
+                : Brushes.Transparent;
+        }
+
+        if (_toolbarButtons.TryGetValue("showWhitespaceButton", out var wsBtn))
+        {
+            wsBtn.Background = tab.Editor.Options.ShowSpaces
+                ? (Brush)FindResource("AccentBlue")
+                : Brushes.Transparent;
         }
     }
 
@@ -1363,22 +1532,38 @@ public partial class MainWindow : Window
             _ => string.Empty
         };
         UpdateEncodingButton(tab);
-        copyToExcelButton.IsEnabled = tab.FileType is FileType.Xml or FileType.Json or FileType.Yaml;
-        minifyButton.IsEnabled = tab.FileType is FileType.Xml or FileType.Json or FileType.Edi;
-        sortDcsaButton.IsEnabled = tab.FileType == FileType.Json;
+
+        // Enable/disable toolbar buttons (gracefully skip missing ones)
+        if (_toolbarButtons.TryGetValue("copyToExcelButton", out var copyExcel))
+            copyExcel.IsEnabled = tab.FileType is FileType.Xml or FileType.Json or FileType.Yaml;
+        if (_toolbarButtons.TryGetValue("minifyButton", out var minify))
+            minify.IsEnabled = tab.FileType is FileType.Xml or FileType.Json or FileType.Edi;
+        if (_toolbarButtons.TryGetValue("sortDcsaButton", out var sortDcsa))
+            sortDcsa.IsEnabled = tab.FileType == FileType.Json;
+
         bool canConvert = tab.FileType is FileType.Xml or FileType.Json or FileType.Yaml;
-        convertFormatButton.IsEnabled = canConvert;
-        convertFormatLabel.Text = tab.FileType == FileType.Json ? "To XML"
-            : tab.FileType == FileType.Yaml ? "To JSON" : "To JSON";
-        convertToYamlButton.IsEnabled = canConvert;
-        convertToYamlLabel.Text = tab.FileType == FileType.Json ? "To YAML"
-            : tab.FileType == FileType.Yaml ? "To XML" : "To YAML";
-        generateSampleXmlButton.IsEnabled = tab.FileType == FileType.Xml
-            && string.Equals(Path.GetExtension(tab.FilePath), ".xsd", StringComparison.OrdinalIgnoreCase);
-        generateSampleJsonButton.IsEnabled = tab.IsSchemaDetected
-            && tab.FileType is FileType.Json or FileType.Yaml;
-        validateXsdButton.IsEnabled = tab.FileType == FileType.Xml;
-        validateXsdLabel.Text = IsXsdTab(tab) ? "Validate XML" : "Validate vs XSD";
+        if (_toolbarButtons.TryGetValue("convertFormatButton", out var convertFmt))
+            convertFmt.IsEnabled = canConvert;
+        if (_toolbarDynamicLabels.TryGetValue("convertFormatLabel", out var convertFmtLabel))
+            convertFmtLabel.Text = tab.FileType == FileType.Json ? "To XML"
+                : tab.FileType == FileType.Yaml ? "To JSON" : "To JSON";
+
+        if (_toolbarButtons.TryGetValue("convertToYamlButton", out var convertYaml))
+            convertYaml.IsEnabled = canConvert;
+        if (_toolbarDynamicLabels.TryGetValue("convertToYamlLabel", out var convertYamlLabel))
+            convertYamlLabel.Text = tab.FileType == FileType.Json ? "To YAML"
+                : tab.FileType == FileType.Yaml ? "To XML" : "To YAML";
+
+        if (_toolbarButtons.TryGetValue("generateSampleXmlButton", out var sampleXml))
+            sampleXml.IsEnabled = tab.FileType == FileType.Xml
+                && string.Equals(Path.GetExtension(tab.FilePath), ".xsd", StringComparison.OrdinalIgnoreCase);
+        if (_toolbarButtons.TryGetValue("generateSampleJsonButton", out var sampleJson))
+            sampleJson.IsEnabled = tab.IsSchemaDetected
+                && tab.FileType is FileType.Json or FileType.Yaml;
+        if (_toolbarButtons.TryGetValue("validateXsdButton", out var validateXsd))
+            validateXsd.IsEnabled = tab.FileType == FileType.Xml;
+        if (_toolbarDynamicLabels.TryGetValue("validateXsdLabel", out var validateLabel))
+            validateLabel.Text = IsXsdTab(tab) ? "Validate XML" : "Validate vs XSD";
     }
 
     // ──────────────────────────── encoding picker ────────────────────────────
@@ -1532,6 +1717,8 @@ public partial class MainWindow : Window
     private void SaveFile_Click(object sender, RoutedEventArgs e) => SaveFile();
     private void SaveFileAs_Click(object sender, RoutedEventArgs e) => SaveFileAs();
     private void SaveAll_Click(object sender, RoutedEventArgs e) => SaveAll();
+    private void Undo_Click(object sender, RoutedEventArgs e) { if (ActiveTab?.Editor.CanUndo == true) ActiveTab.Editor.Undo(); }
+    private void Redo_Click(object sender, RoutedEventArgs e) { if (ActiveTab?.Editor.CanRedo == true) ActiveTab.Editor.Redo(); }
     private void Exit_Click(object sender, RoutedEventArgs e) => Close();
     private void FormatDocument_Click(object sender, RoutedEventArgs e) => FormatDocument();
     private void GoToLine_Click(object sender, RoutedEventArgs e) => GoToLine();
@@ -1549,6 +1736,7 @@ public partial class MainWindow : Window
     private void ImportSettings_Click(object sender, RoutedEventArgs e) => ImportSettings();
     private void CustomizeColors_Click(object sender, RoutedEventArgs e) => CustomizeColors();
     private void DcsaSchemaUrls_Click(object sender, RoutedEventArgs e) => OpenDcsaSchemaUrlSettings();
+    private void CustomizeToolbar_Click(object sender, RoutedEventArgs e) => CustomizeToolbar();
 
     private void CustomizeColors()
     {
@@ -1605,7 +1793,8 @@ public partial class MainWindow : Window
                 _colorSettings,
                 pathW,
                 valueW,
-                _dcsaSchemaUrls);
+                _dcsaSchemaUrls,
+                ToolbarLayout: _toolbarLayout);
 
             File.WriteAllText(dlg.FileName, JsonSerializer.Serialize(settings,
                 new JsonSerializerOptions { WriteIndented = true }));
@@ -1706,6 +1895,13 @@ public partial class MainWindow : Window
         // Import DCSA schema URLs if present
         if (settings.DcsaSchemaUrls is { Count: > 0 } importedUrls)
             _dcsaSchemaUrls = new List<string>(importedUrls);
+
+        // Import toolbar layout if present
+        if (settings.ToolbarLayout is { Count: > 0 } importedToolbar)
+        {
+            _toolbarLayout = new List<ToolbarItemConfig>(importedToolbar);
+            BuildToolbar();
+        }
 
         SetStatus($"Settings imported from: {Path.GetFileName(dlg.FileName)}");
     }
@@ -1843,9 +2039,10 @@ public partial class MainWindow : Window
         foreach (var ti in editorTabs.Items.OfType<TabItem>())
             if (ti.Tag is EditorTab t) t.Editor.WordWrap = wrap;
         wordWrapMenuItem.IsChecked = wrap;
-        wordWrapButton.Background = wrap
-            ? (Brush)FindResource("AccentBlue")
-            : Brushes.Transparent;
+        if (_toolbarButtons.TryGetValue("wordWrapButton", out var wrapBtn))
+            wrapBtn.Background = wrap
+                ? (Brush)FindResource("AccentBlue")
+                : Brushes.Transparent;
     }
 
     private void ToggleShowWhitespace()
@@ -1863,9 +2060,10 @@ public partial class MainWindow : Window
                 t.Editor.Options.ShowEndOfLine = show;
             }
         }
-        showWhitespaceButton.Background = show
-            ? (Brush)FindResource("AccentBlue")
-            : Brushes.Transparent;
+        if (_toolbarButtons.TryGetValue("showWhitespaceButton", out var wsBtn))
+            wsBtn.Background = show
+                ? (Brush)FindResource("AccentBlue")
+                : Brushes.Transparent;
     }
 
     private void OpenFile()
@@ -2601,7 +2799,8 @@ public partial class MainWindow : Window
             return;
         }
 
-        sortDcsaButton.IsEnabled = false;
+        if (_toolbarButtons.TryGetValue("sortDcsaButton", out var sortBtn))
+            sortBtn.IsEnabled = false;
         SetStatus("Fetching DCSA schemas…");
 
         try
@@ -2631,8 +2830,8 @@ public partial class MainWindow : Window
         }
         finally
         {
-            if (ActiveTab?.FileType == FileType.Json)
-                sortDcsaButton.IsEnabled = true;
+            if (ActiveTab?.FileType == FileType.Json && _toolbarButtons.TryGetValue("sortDcsaButton", out var sortBtnFinally))
+                sortBtnFinally.IsEnabled = true;
         }
     }
 
@@ -2643,6 +2842,17 @@ public partial class MainWindow : Window
         {
             _dcsaSchemaUrls = newUrls;
             SetStatus("DCSA schema URLs updated");
+        }
+    }
+
+    private void CustomizeToolbar()
+    {
+        var dlg = new ToolbarSettingsWindow(_isDarkMode, _toolbarLayout, ToolbarButtonRegistry) { Owner = this };
+        if (dlg.ShowDialog() == true && dlg.Result is { } newLayout)
+        {
+            _toolbarLayout = newLayout;
+            BuildToolbar();
+            SetStatus("Toolbar layout updated");
         }
     }
 

@@ -433,6 +433,8 @@ Click the **🌙 / ☀️** button in the toolbar to toggle between **dark** and
 | `Ctrl+O` | Open File… |
 | `Ctrl+S` | Save |
 | `Ctrl+Shift+S` | Save All |
+| `Ctrl+Z` | Undo |
+| `Ctrl+Y` | Redo |
 | `Ctrl+F` | Find in Editor |
 | `Ctrl+H` | Find & Replace |
 | `Ctrl+G` | Go to Line |
@@ -478,7 +480,7 @@ A splash screen is shown briefly while PathFinder loads — it displays the app 
 
 ### Export / Import Settings
 
-Use **Settings → Export Settings…** to save your current layout, theme, open files, and DCSA schema URLs to a `.pathfinder.json` file. Use **Settings → Import Settings…** to restore a previously exported configuration. Importing will close all current tabs, apply the saved theme, and reopen the saved file list with pin states.
+Use **Settings → Export Settings…** to save your current layout, theme, open files, toolbar layout, and DCSA schema URLs to a `.pathfinder.json` file. Use **Settings → Import Settings…** to restore a previously exported configuration. Importing will close all current tabs, apply the saved theme and toolbar layout, and reopen the saved file list with pin states.
 
 ### Customize Syntax Colors
 
@@ -506,6 +508,26 @@ Use **Settings → DCSA Schema URLs…** to manage the list of SwaggerHub API UR
 - **Reset to Defaults** to restore the built-in URLs (DCSA_EBL and DCSA_BKG)
 
 DCSA schema URLs are persisted across sessions and are included when exporting/importing settings.
+
+### Customize Toolbar
+
+Use **Settings → Customize Toolbar…** to open the toolbar customization dialog. You can add, remove, and reorder toolbar buttons to match your workflow.
+
+The dialog has two columns:
+- **Current Toolbar** (left) — the buttons currently shown in the toolbar, in order
+- **Available Buttons** (right) — buttons not currently in the toolbar
+
+Use the center buttons to modify the toolbar:
+- **▲ Move Up** / **▼ Move Down** — reorder the selected button
+- **✕ Remove** — remove the selected button from the toolbar
+- **← Add** — add the selected available button after the current selection
+- **+ Separator** — insert a visual separator at the current position
+
+Click **Reset to Defaults** to restore the factory-default toolbar layout. Click **OK** to apply, or **Cancel** to discard changes.
+
+Toolbar layout is automatically included when using **Settings → Export Settings…** and **Settings → Import Settings…**, so your toolbar configuration travels with the rest of your settings.
+
+Toolbar layout is saved to `%LOCALAPPDATA%\PathFinder\settings.json` and persists across sessions.
 
 ---
 

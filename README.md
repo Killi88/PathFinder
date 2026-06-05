@@ -39,6 +39,7 @@ A WPF desktop application for XML/JSON/YAML editing with XPath/JSONPath/YAMLPath
 - **Tab management** — pin, drag-reorder, close all / close all but pinned
 - **External file change detection** — prompts to reload when files change on disk
 - **Import / Export settings** for sharing workspace configuration
+- **Customizable toolbar** — add, remove, and reorder toolbar buttons via Settings → Customize Toolbar…
 - **Windows Explorer integration** — register an "Open with PathFinder" right-click context menu entry via **Help** menu
 - **Single-instance** — opening a file from Explorer reuses the running PathFinder window
 
@@ -150,6 +151,8 @@ Or open `PathFinder.sln` in Visual Studio and press **F5**.
 | `Ctrl+O` | Open file |
 | `Ctrl+S` | Save |
 | `Ctrl+Shift+S` | Save All |
+| `Ctrl+Z` | Undo |
+| `Ctrl+Y` | Redo |
 | `Ctrl+F` | Find |
 | `Ctrl+H` | Find & Replace |
 | `Ctrl+G` | Go to Line |

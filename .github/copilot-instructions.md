@@ -46,6 +46,7 @@ PathFinder/
 │   ├── HelpWindow.xaml / HelpWindow.xaml.cs   # In-app help (F1), renders MANUAL.md
 │   ├── SplashScreen.xaml / SplashScreen.xaml.cs # Startup splash screen
 │   ├── SyntaxColorsWindow.xaml / SyntaxColorsWindow.xaml.cs # Custom syntax color picker dialog
+│   ├── ToolbarSettingsWindow.xaml / ToolbarSettingsWindow.xaml.cs # Toolbar customization dialog
 │   ├── CodeListWindow.xaml / CodeListWindow.xaml.cs   # EDIFACT code list popup with search bar
 │   ├── DcsaSettingsWindow.xaml / DcsaSettingsWindow.xaml.cs # DCSA schema URL management dialog
 │   ├── ReplaceWindow.xaml / ReplaceWindow.xaml.cs       # Find & Replace dialog (non-modal, themed, Topmost)
@@ -55,6 +56,7 @@ PathFinder/
 │   │   ├── MessageItem.cs         # Messages panel item (error text + optional line number)
 │   │   ├── SchemaNode.cs          # Unified schema node model for XSD + JSON Schema visualization
 │   │   ├── SyntaxColorSettings.cs # Custom syntax color settings model + persistence
+│   │   ├── ToolbarItemConfig.cs   # Toolbar button/separator configuration for customizable toolbar
 │   │   └── XPathResultItem.cs     # Query result item (XPath/JSONPath)
 │   ├── Models/
 │   │   └── EdifactDefinition.cs   # Data models for EDIFACT scraped definitions (message, segment, field, code-list)
@@ -265,6 +267,29 @@ Or open `PathFinder.sln` in Visual Studio and press F5.
 - Constructor auto-selects the first row when URLs exist; **Reset to Defaults** restores `MainWindow.DefaultDcsaSchemaUrls` and selects the first row
 - `Result` property returns the list on OK; `null` on Cancel
 - Themed via `DynamicResource` keys (`AppBackground`, `EditorBackground`, `EditorForeground`, `LabelForeground`, `AccentBlue`, `ActionButtonBackground`, `ActionButtonDisabled`, `ActionButtonDisabledForeground`, `SeparatorColor`, `GridSplitterColor`)
+
+### Toolbar Settings Window (`ToolbarSettingsWindow.xaml`)
+- Opened via **Settings → Customize Toolbar…** in the menu bar
+- Constructor accepts `bool isDark`, `List<ToolbarItemConfig> currentLayout`, and `IEnumerable<ToolbarButtonDefinition> registry`; deep-copies the layout list so Cancel doesn't mutate the original
+- `ApplyTheme` loads the theme dictionary into `Resources.MergedDictionaries`
+- UI: two-column layout — **Current Toolbar** list (left) and **Available Buttons** list (right); center action buttons: **▲ Move Up**, **▼ Move Down**, **✕ Remove**, **← Add**, **+ Separator**
+- Available list shows all registered buttons not currently in the toolbar; separators can always be added (not deduplicated)
+- **Add** inserts the selected available button after the current selection in the toolbar list
+- **Remove** removes the selected item from the current toolbar list (button returns to available list)
+- **Reset to Defaults** restores `MainWindow.DefaultToolbarLayout`
+- `Result` property returns the layout list on OK; `null` on Cancel
+- Footer: **Reset to Defaults** (left), **OK** / **Cancel** (right)
+- Themed via `DynamicResource` keys (`AppBackground`, `EditorBackground`, `EditorForeground`, `LabelForeground`, `AccentBlue`, `ActionButtonBackground`, `SeparatorColor`, `GridSplitterColor`)
+
+### Dynamic Toolbar
+- The toolbar is built programmatically from `_toolbarLayout` (a `List<ToolbarItemConfig>`) via `BuildToolbar()`
+- `ToolbarButtonRegistry` defines all available buttons: ID, icon, label, tooltip, click handler, optional `x:Name` for status-bar updates, and optional dynamic label key
+- `DefaultToolbarLayout` is the factory-default button order: New, Open, Save, SaveAll, `---`, Undo, Redo, `---`, AutoIndent, Minify, `---`, WordWrap, Whitespace, ConvertFormat, ConvertYaml, SampleXml, SampleJson, ValidateXsd, CopyExcel, SortDcsa
+- `_toolbarButtons` (`Dictionary<string, Button>`) maps `x:Name` → button instance for status-bar enable/disable updates
+- `_toolbarDynamicLabels` (`Dictionary<string, TextBlock>`) maps label key → `TextBlock` for dynamic button label updates (e.g. "To JSON" / "To XML")
+- `UpdateStatusBar` uses `_toolbarButtons.TryGetValue()` and `_toolbarDynamicLabels.TryGetValue()` to gracefully handle missing buttons
+- `RestoreToolbarToggleStates()` re-applies AccentBlue background to word-wrap and show-whitespace buttons after toolbar rebuild
+- Toolbar layout is persisted in `WindowLayoutSettings.ToolbarLayout` and included in Export/Import Settings
 
 ### XSD Validation Selector Window (`XsdValidationSelectorWindow.xaml`)
 - Opened via **✓ Validate XML** or **✓ Validate vs XSD** toolbar button
@@ -507,6 +532,7 @@ Or open `PathFinder.sln` in Visual Studio and press F5.
 - **`GridNode`** — sealed class for tree nodes; `LabelColor` and `ValueColor` are string hex properties bound in the DataTemplate; colors depend on theme (see Grid View Theming above)
 - **`MessageItem`** — `Message` (string), `LineNumber` (int?), `Display` (computed: `"Line N: message"` when line number is present, otherwise plain message), `CodeListDirectory`/`CodeListElementId`/`CodeListElementName`/`CodeListSegmentTag` (all `string?`) for code-list errors, `HasCodeList` (computed bool) — used by the Messages panel
 - **`SyntaxColorSettings`** — custom syntax color settings model with `DarkColors`/`LightColors` dictionaries, JSON persistence, hex validation, and static default color maps (see Syntax Color Customization above)
+- **`ToolbarItemConfig`** — `record ToolbarItemConfig(string Id)` with `SeparatorId = "---"` constant and `IsSeparator` computed property; used by `BuildToolbar()`, persisted in `WindowLayoutSettings.ToolbarLayout`
 - **`SchemaNode`** — unified schema node model for XSD and JSON/YAML Schema visualization; properties: `Name`, `TypeName`, `TypeKind` (`complex`/`simple`/`object`/`array`/`string`/`number`/`integer`/`boolean`), `MinOccurs`/`MaxOccurs`, `IsRequired`, `IsChoice`/`ChoiceGroup`/`ChoiceOption`/`ChoiceKeyword`, `IsRecursive`/`IsTruncated`, `IsAttribute`, `IsArrayItem`, `Documentation`, `Restrictions` (Dictionary), `Format`, `IsExpanded`, `Children` (List<SchemaNode>); used by both `XsdSchemaService` and `JsonSchemaService` and rendered in the Schema Tree view
 
 ### Context Menu — Code-behind Pattern
@@ -536,12 +562,12 @@ Or open `PathFinder.sln` in Visual Studio and press F5.
 - Window opens centered on screen (`WindowStartupLocation="CenterScreen"`), default size `1600 × 960`
 - **Go to Line (Ctrl+G):** `GoToLine()` opens a themed `ToolWindow` dialog with a text input; on valid line number, scrolls the editor and places the caret; input is validated against `tab.Editor.Document.LineCount`
 - **Auto Indent error messages:** if `FormatDocument` (Ctrl+Shift+F) fails due to a syntax error in the document, the error is shown in the **Messages** panel with a navigable line number (extracted from `XmlException` / `JsonReaderException`); the document is left unchanged
-- **Window layout persistence:** on close, position (`Left`/`Top`), size (`Width`/`Height`), maximised state, right-panel width, active theme (dark/light), the list of open file paths, the set of pinned file paths, the All Paths column widths, the DCSA schema URL list, and the recent files list are saved to `%LOCALAPPDATA%\PathFinder\settings.json` via `WindowLayoutSettings` record + `SaveWindowSettings`/`LoadWindowSettings` helpers; on next launch the constructor restores these values (falls back to centre-screen if the saved position is off all monitors)
+- **Window layout persistence:** on close, position (`Left`/`Top`), size (`Width`/`Height`), maximised state, right-panel width, active theme (dark/light), the list of open file paths, the set of pinned file paths, the All Paths column widths, the DCSA schema URL list, the toolbar layout, and the recent files list are saved to `%LOCALAPPDATA%\PathFinder\settings.json` via `WindowLayoutSettings` record + `SaveWindowSettings`/`LoadWindowSettings` helpers; on next launch the constructor restores these values (falls back to centre-screen if the saved position is off all monitors)
 - **Session restore:** `WindowLayoutSettings.OpenFiles` stores the file paths of all saved tabs; `WindowLayoutSettings.PinnedFiles` stores the paths of pinned tabs; on startup `Window_Loaded` reopens these files (skipping any that no longer exist on disk) and re-applies the pin state via `TogglePinTab`; if there are no saved files a blank tab is opened instead
 - `OpenFileFromPath` returns `EditorTab?` so callers (e.g. session restore) can act on the newly opened tab (e.g. pin it)
 - `WindowLayoutSettings`, `SettingsFilePath`, `SaveWindowSettings(settings, path?)`, and `LoadWindowSettings(path?)` are `internal` (not `private`) so they can be tested via `InternalsVisibleTo("PathFinder.Tests")`; both helpers accept an optional explicit path to support testing without touching the real settings file
-- **Export Settings** (`Settings › Export Settings…`) — serialises the current `WindowLayoutSettings` (position, size, panel width, theme, open files, pinned files, All Paths column widths, DCSA schema URLs, recent files) to a user-chosen `.pathfinder.json` file using indented JSON; calls `ExportSettings()`
-- **Import Settings** (`Settings › Import Settings…`) — reads a `.pathfinder.json` file, prompts for confirmation, applies the window layout and theme (including All Paths column widths and DCSA schema URLs), closes all current tabs (suppressing save prompts), then reopens files in pinned-first order restoring pin state; calls `ImportSettings()`
+- **Export Settings** (`Settings › Export Settings…`) — serialises the current `WindowLayoutSettings` (position, size, panel width, theme, open files, pinned files, All Paths column widths, DCSA schema URLs, toolbar layout, recent files) to a user-chosen `.pathfinder.json` file using indented JSON; calls `ExportSettings()`
+- **Import Settings** (`Settings › Import Settings…`) — reads a `.pathfinder.json` file, prompts for confirmation, applies the window layout and theme (including All Paths column widths, DCSA schema URLs, and toolbar layout), closes all current tabs (suppressing save prompts), then reopens files in pinned-first order restoring pin state; calls `ImportSettings()`
 
 **Keyboard shortcuts:**
 
@@ -551,6 +577,8 @@ Or open `PathFinder.sln` in Visual Studio and press F5.
 | `Ctrl+O` | Open file |
 | `Ctrl+S` | Save |
 | `Ctrl+Shift+S` | Save All |
+| `Ctrl+Z` | Undo |
+| `Ctrl+Y` | Redo |
 | `Ctrl+F` | Find |
 | `Ctrl+H` | Find & Replace |
 | `Ctrl+G` | Go to Line |
@@ -576,6 +604,7 @@ Or open `PathFinder.sln` in Visual Studio and press F5.
 - `TestFiles/` is declared as `<Content CopyToOutputDirectory="PreserveNewest">` in the test `.csproj` so files are available at `AppContext.BaseDirectory/TestFiles/` at runtime
 - Test helpers use `Path.Combine(AppContext.BaseDirectory, "TestFiles", filename)` — never hardcode absolute paths
 - **Menu bar order:** the `Help` menu must always be the last (rightmost) top-level menu item in `MainWindow.xaml`
+- **Disabled button styling pitfall:** WPF's default `Button` template uses a Chrome overlay that washes out custom `Background`/`Foreground` colors when `IsEnabled="False"`, making disabled buttons unreadable on dark themes. Any button that toggles `IsEnabled` must use a custom `ControlTemplate` (Border + ContentPresenter, no Chrome) with a `Trigger` on `IsEnabled=False` that sets `Background` to `{DynamicResource ActionButtonDisabled}` and `Foreground` to `{DynamicResource ActionButtonDisabledForeground}`. See the `DisableableButton` style in `ToolbarSettingsWindow.xaml` or the Delete button in `DcsaSettingsWindow.xaml` for the pattern.
 
 ---
 
